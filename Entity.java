@@ -1,5 +1,3 @@
-package PokemonProject;
-
 public class Entity{
     
     private String name;
