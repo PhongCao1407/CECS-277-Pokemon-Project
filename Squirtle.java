@@ -1,4 +1,3 @@
-package PokemonProject;
 import java.util.Random;
 
 public class Squirtle extends Pokemon implements Water {
