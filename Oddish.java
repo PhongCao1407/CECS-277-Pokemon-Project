@@ -1,7 +1,7 @@
 public class Oddish extends Pokemon implements Grass {
     
-    public Oddish(String n){
-        super(n);
+    public Oddish(){
+        super("Oddish");
         this.pokemonType = "Grass";
     }
 

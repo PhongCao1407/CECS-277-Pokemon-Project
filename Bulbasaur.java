@@ -1,7 +1,7 @@
 public class Bulbasaur extends Pokemon implements Grass {
     
-    public Bulbasaur(String n){
-        super(n);
+    public Bulbasaur(){
+        super("Bulbasaur");
         this.pokemonType = "Grass";
     }
 
