@@ -17,7 +17,7 @@ public abstract class Pokemon extends Entity{
     /**
      * the type of the Pokemon, to be implemented later in the subclasses
      */
-    private String pokemonType;
+    public String pokemonType;
 
     public Pokemon(String n){
         super(n, RANDOM_HEALTH);
@@ -27,7 +27,7 @@ public abstract class Pokemon extends Entity{
      * @return the special menu as a String
      */
     public abstract String getSpecialMenu();
-    
+
     /**
      * @return the number of choices in the special menu
      */
