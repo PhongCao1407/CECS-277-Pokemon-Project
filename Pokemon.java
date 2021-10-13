@@ -113,7 +113,6 @@ public abstract class Pokemon extends Entity{
             + MIN_DAMAGE;
         p.takeDamage(slamDamage);
         return super.getName() + "take " + slamDamage + " damages";
-        
     }
 
     /**
