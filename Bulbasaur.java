@@ -33,7 +33,24 @@ public class Bulbasaur extends Pokemon implements Grass {
     public String vineWhip(Pokemon p){
         final int MIN_DAMAGE = 1;
         final int MAX_DAMAGE = 3;
-        int damage = calcDamage(p, MIN_DAMAGE, MAX_DAMAGE);
+        int damage = 0;
+        switch (p.getType()){
+            case 0:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][0]);
+                break;
+            case 1:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][1]);
+                break;
+            case 2:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][2]);
+                break;
+        }
 
         p.takeDamage(damage);
         return super.getName() + "take " + damage + " damages";
@@ -42,7 +59,24 @@ public class Bulbasaur extends Pokemon implements Grass {
     public String razorLeaf(Pokemon p){
         final int MIN_DAMAGE = 2;
         final int MAX_DAMAGE = 4;
-        int damage = calcDamage(p, MIN_DAMAGE, MAX_DAMAGE);
+        int damage = 0;
+        switch (p.getType()){
+            case 0:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][0]);
+                break;
+            case 1:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][1]);
+                break;
+            case 2:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][2]);
+                break;
+        }
 
         p.takeDamage(damage);
         return super.getName() + "take " + damage + " damages";
@@ -51,32 +85,27 @@ public class Bulbasaur extends Pokemon implements Grass {
     public String solarBeam(Pokemon p){
         final int MIN_DAMAGE = 0;
         final int MAX_DAMAGE = 5;
-        int damage = calcDamage(p, MIN_DAMAGE, MAX_DAMAGE);
+        int damage = 0;
+        switch (p.getType()){
+            case 0:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][0]);
+                break;
+            case 1:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][1]);
+                break;
+            case 2:
+                damage = 
+                    (int)(((int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
+                    + MIN_DAMAGE) * battleTable[2][2]);
+                break;
+        }
 
         p.takeDamage(damage);
         return super.getName() + "take " + damage + " damages";
     }
 
-    //Ask prof about this
-    public int calcDamage(Pokemon p,int minDamage, int maxDamage){
-        switch (p.getType()){
-            case 0:
-                return 
-                    (int)(((int)(Math.random() * ((maxDamage-minDamage)+1)) 
-                    + minDamage) * battleTable[2][0]);
-            case 1:
-                return
-                    (int)(((int)(Math.random() * ((maxDamage-minDamage)+1)) 
-                    + minDamage) * battleTable[2][1]);
-            case 2:
-                return 
-                    (int)(((int)(Math.random() * ((maxDamage-minDamage)+1)) 
-                    + minDamage) * battleTable[2][2]);
-            default:
-                return -1;
-        }
-    }
-
-
-    
 }
