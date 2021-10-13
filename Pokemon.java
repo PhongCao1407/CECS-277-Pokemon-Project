@@ -108,11 +108,11 @@ public abstract class Pokemon extends Entity{
     public String slam(Pokemon p){
         final int MIN_DAMAGE = 0;
         final int MAX_DAMAGE = 5;
-        int slamDamage = 
+        int damage = 
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
-        p.takeDamage(slamDamage);
-        return super.getName() + "take " + slamDamage + " damages";
+        p.takeDamage(damage);
+        return super.getName() + "take " + damage + " damages";
     }
 
     /**
@@ -124,11 +124,11 @@ public abstract class Pokemon extends Entity{
     public String tackle(Pokemon p){
         final int MIN_DAMAGE = 2;
         final int MAX_DAMAGE = 3;
-        int tackleDamage = 
+        int damage = 
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
-        p.takeDamage(tackleDamage);
-        return super.getName() + "take " + tackleDamage + " damages";
+        p.takeDamage(damage);
+        return super.getName() + "take " + damage + " damages";
     }
 
     /**
@@ -140,11 +140,11 @@ public abstract class Pokemon extends Entity{
     public String punch(Pokemon p){
         final int MIN_DAMAGE = 1;
         final int MAX_DAMAGE = 4;
-        int punchDamage = 
+        int damage = 
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
-        p.takeDamage(punchDamage);
-        return super.getName() + "take " + punchDamage + " damages";
+        p.takeDamage(damage);
+        return super.getName() + "take " + damage + " damages";
     }
 
     /**
