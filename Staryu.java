@@ -1,8 +1,14 @@
 import java.util.Random;
 
 public class Staryu extends Pokemon implements Water {
+
     Random rand = new Random();
     
+    public void Staryu(){
+        super("Staryu");
+        this.pokemonType = "Water";
+    }
+
     @Override
     public String waterGun(Pokemon p){
         int damage = rand.nextInt(5) + 1; //1-5 damage
