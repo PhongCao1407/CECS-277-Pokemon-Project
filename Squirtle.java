@@ -4,6 +4,11 @@ public class Squirtle extends Pokemon implements Water {
 
     Random rand = new Random();
 
+    public void Squirtle(){
+        super("Squirtle");
+        this.pokemonType = "Water";
+    }
+
     @Override
     public String waterGun(Pokemon p){
         int damage = rand.nextInt(4) + 2; //2-5 damage
