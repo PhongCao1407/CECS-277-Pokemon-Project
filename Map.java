@@ -1,4 +1,3 @@
-package PokemonProject;
 import java.awt.Point;
 import java.util.Scanner;
 import java.io.File;
