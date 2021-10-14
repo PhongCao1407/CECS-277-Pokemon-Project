@@ -1,5 +1,23 @@
 public class Main{
     public static void main(String[] args){
+        System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
+        String yourName = CheckInput.getString(); //get name
+
+        System.out.println("Great to meet you, " + yourName);
+        System.out.println("Choose your first pokemon:\n1. Charmander\n2. Bulbasaur\n3. Squirtle");
+        int firstPokemon = CheckInput.getIntRange(1,3); //get first pokemon choice
+
+        Pokemon starter = new Charmander(); //predeclare starter pokemon
+
+        switch(firstPokemon){ //actually declare starter pokemon
+            case 1: starter = new Charmander(); break;
+            case 2: starter = new Bulbasaur(); break;
+            case 3: starter = new Squirtle(); break;
+        }
+        Map m = new Map(); //create map
+        Trainer you = new Trainer(yourName, starter, m); //create trainer
+        you.map.loadMap(1); //load first map
+        //TODO the loop thing
     }
 
     public static int mainMenu(){
