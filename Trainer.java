@@ -1,14 +1,3 @@
-package Project1;
-/*
-1. Trainer class
-2. Fire Interface
-3. Charmander class
-4. Ponyta class
-5. mainMenu method
-6. chooseRandPokemon
-method
-7. main method
- */
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
