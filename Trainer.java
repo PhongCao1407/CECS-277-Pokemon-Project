@@ -172,7 +172,7 @@ public class Trainer extends Entity {
 	}
 	
 	/**
-	 * increments y value of point, causing the user to move one space downward on the map IF they are located below row 0 of the map
+	 * increments y value of point, causing the user to move one space downward on the map IF they are located above row 4 of the map
 	 * Switches to a different map depending on location of user (if they land on f), reveals characters found at locations they have visited, and removes certain visited characters
 	 * functionality of each character will be further defined in main
 	 * @return character found at map when user goes south
