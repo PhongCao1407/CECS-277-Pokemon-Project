@@ -1,5 +1,3 @@
-package Project1;
-
 public class Ponyta extends Pokemon implements Fire {
 	
 	public Ponyta() {
