@@ -27,7 +27,7 @@ public class Bulbasaur extends Pokemon implements Grass {
             default:
                 return "That is not a valid move.";
         }
-        return p.getName() + " is hurt.";
+        return p.toString();
     }
 
     public String vineWhip(Pokemon p){
@@ -37,7 +37,7 @@ public class Bulbasaur extends Pokemon implements Grass {
         + MIN_DAMAGE) * battleTable[2][p.getType()]);
 
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + " is WHIPPED with VINE and takes " +  damage + " damage";
     }
 
     public String razorLeaf(Pokemon p){
@@ -47,7 +47,7 @@ public class Bulbasaur extends Pokemon implements Grass {
         + MIN_DAMAGE) * battleTable[2][p.getType()]);
 
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + "is SLASHED with RAZOR LEAF and takes " + damage + " damages";
     }
 
     public String solarBeam(Pokemon p){
@@ -57,7 +57,7 @@ public class Bulbasaur extends Pokemon implements Grass {
         + MIN_DAMAGE) * battleTable[2][p.getType()]);
 
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + " is DAZZLED by SOLAR BEAM and takes " +  damage + " damage";
     }
 
 }
