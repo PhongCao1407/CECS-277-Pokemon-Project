@@ -80,7 +80,7 @@ public abstract class Pokemon extends Entity{
             default:
                 return "That is not a valid move.";
         }
-        return p.getName() + " is hurt.";
+        return p.toString();
 
     }
 
@@ -112,7 +112,7 @@ public abstract class Pokemon extends Entity{
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + " is SLAMMED by " + this.getName() + " and takes " +  damage + " damage.";
     }
 
     /**
@@ -128,7 +128,7 @@ public abstract class Pokemon extends Entity{
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + " is TACKLED by " + this.getName() + " and takes " +  damage + " damage.";
     }
 
     /**
@@ -144,7 +144,7 @@ public abstract class Pokemon extends Entity{
             (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
             + MIN_DAMAGE;
         p.takeDamage(damage);
-        return super.getName() + "take " + damage + " damages";
+        return p.getName() + " is PUNCHED by " + this.getName() + " and takes " +  damage + " damage.";
     }
 
     /**
