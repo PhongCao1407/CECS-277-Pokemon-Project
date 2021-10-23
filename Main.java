@@ -1,4 +1,8 @@
+import java.util.*;
+
 public class Main{
+
+    static Scanner input = new Scanner(System.in);
     public static void main(String[] args){
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
         String yourName = CheckInput.getString(); //get name
@@ -30,8 +34,27 @@ public class Main{
     }
 
     public static void trainerAttack(Trainer t, Pokemon wild){
-        //TODO
-        
+
+        System.out.println("Choose a Pokemon\n");
+        System.out.println(t.getPokemonList());
+        Pokemon userPokemon = t.getPokemon(input.nextInt());
+        System.out.println(userPokemon.getName() + ", I choose you!");
+        System.out.println(userPokemon.getAttackMenu());
+
+        int attackMenu = input.nextInt();
+        switch(attackMenu){
+            case 1:
+                System.out.println(userPokemon.getBasicMenu());
+                int basicAttackChoice = input.nextInt();
+                userPokemon.basicAttack(wild, basicAttackChoice);
+                break;
+            case 2:
+                System.out.println(userPokemon.getSpecialMenu());
+                int specialAttackChoice = input.nextInt();
+                userPokemon.specialAttack(wild, specialAttackChoice);
+                break;
+        }
+
     }
 
     /** This function implements the whole city
