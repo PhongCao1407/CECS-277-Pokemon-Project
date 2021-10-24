@@ -30,6 +30,7 @@ public class Map {
                 for (int i = 0; i <= 8; i += 2){
                     this.map[lineNum][i/2] = currentLine.charAt(i);
                 }
+                lineNum += 1;
             }
             fileScan.close();
         } catch (FileNotFoundException e){
@@ -50,12 +51,24 @@ public class Map {
                     mapString += '*';
                 }else if(this.revealed[i][j] == true){
                     mapString += this.map[i][j];
-                }else{
-                    System.out.println("here " + i +  " " + j);
+                }else if(this.revealed[i][j] == false){
+
                     mapString += 'x';
                     
                 }
                 mapString += ' ';
+            }
+            mapString += '\n';
+        }
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                mapString += this.revealed[i][j];
+            }
+            mapString += '\n';
+        }
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                mapString += this.map[i][j];
             }
             mapString += '\n';
         }
@@ -64,7 +77,7 @@ public class Map {
 
     public Point findStart(){
         int x = 0;
-        int y = 0;
+        int y = 2;
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
                 if(this.map[i][j] == 's'){
@@ -74,6 +87,7 @@ public class Map {
             }
         }
         Point start = new Point(x,y);
+        this.reveal(start);
         return start;
     }
 

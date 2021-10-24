@@ -157,9 +157,6 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
-				map.removeCharAtLoc(pastloc);
-			}
 			
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
@@ -191,9 +188,7 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
-				map.removeCharAtLoc(pastloc);
-			}
+
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 		}
@@ -210,7 +205,7 @@ public class Trainer extends Entity {
 	 * @return character found at map when user goes east
 	 */	
 	public char goEast() {
-		Point pastloc = getLocation();
+		Point pastloc = this.loc;
 		int x = getLocation().x;
 		if (x < 4) {
 			this.loc.translate(+1, 0);
@@ -224,9 +219,6 @@ public class Trainer extends Entity {
 				}
 			}
 			
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
-				map.removeCharAtLoc(pastloc);
-			}
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 		}
@@ -256,9 +248,7 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
-				map.removeCharAtLoc(pastloc);
-			}
+
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 		}

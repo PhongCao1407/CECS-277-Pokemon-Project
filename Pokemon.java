@@ -69,13 +69,13 @@ public abstract class Pokemon extends Entity{
     public String basicAttack(Pokemon p, int move){
         switch (move){
             case 1:
-                slam(p);
+                System.out.println(slam(p));
                 break;
             case 2:
-                tackle(p);
+                System.out.println(tackle(p));
                 break;
             case 3:
-                punch(p);
+                System.out.println(punch(p));
                 break;
             default:
                 return "That is not a valid move.";

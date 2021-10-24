@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.Arrays; 
+import java.util.Arrays;
+import java.awt.Point; 
 
 public class Main{
     static final Scanner in = new Scanner(System.in);
@@ -32,6 +33,7 @@ public class Main{
             System.out.println(player.toString());
             int menuChoice = mainMenu();
             char loc = '0';
+            Point curr_loc = player.getLocation();
             switch (menuChoice){
                 case 1:
                     loc = player.goNorth();
@@ -58,10 +60,11 @@ public class Main{
                     case 0:
                         player.receivePokeball();
                         System.out.println("You found a poke ball");
-
+                        break;
                     case 1:
                         player.receivePotion();
                         System.out.println("You found a potion");
+                        break;
                 }
             }
             else if (loc == 'w') {
@@ -75,10 +78,12 @@ public class Main{
                 System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
                 int opt_num = CheckInput.getIntRange(1,4);
                 encounterLoop:
-                    while (true && (wild.getHp() != 0 || selecPok.getHp() !=0 )) {
+                    while (wild.getHp() != 0) {
                         switch (opt_num) {
                             case 1: //fight
                                 trainerAttack(player, wild);
+                                    
+                                break;
                             case 2: //use potion	
                                 if (player.hasPotion() == true) {
                                     System.out.println("Which pokemon would you like to heal?");
@@ -89,6 +94,7 @@ public class Main{
                                 else {
                                     System.out.println("You don't have any potions :(");
                                 }
+                                break;
                             case 3: //throw pokeball
                                 if (player.hasPokeball()) {
                                     if (player.catchPokemon(wild) == true) {
@@ -99,6 +105,7 @@ public class Main{
                                 else {
                                     System.out.println("You don't have any pokeballs :(");
                                 }
+                                break;
                             case 4: //run away
                                 char unchanged = m.getCharAtLoc(player.getLocation());
                                 unchanged = 'w';
@@ -129,13 +136,11 @@ public class Main{
                                             }
                                     }
                                 }
+                                break encounterLoop;
                         }
+                        System.out.println(WPOK_MENU);
+                        opt_num = CheckInput.getIntRange(1,4);
                     }
-                //if selected pokemon is at 0 hp, then damage is done towards the player
-                if (selecPok.getHp() == 0) {
-                    int damage = (int)(Math.random() * ((10-5)+1)) + 5;
-                    player.takeDamage(damage);
-                }
                 //if wild pokemon is at 0 hp, then player must decide to catch that pokemon or not
                 if (wild.getHp() == 0) {
                     System.out.println(wild.getName() + " is at 0 hp, would you like to catch or move on?"
@@ -174,12 +179,12 @@ public class Main{
                         }
                     case 2:
                         System.out.println("You found Cilan."
-                                + "/nCilan: Great to see you! I have an extra poke ball and was searching for someone to give it to, here you go!");
+                                + "\nCilan: Great to see you! I have an extra poke ball and was searching for someone to give it to, here you go!");
                         player.receivePokeball(); 
                         break;
                     case 3:
                         System.out.println("You bumped into Misty."
-                                + "/nMisty: Where's my bike, twerp! /nMisty SMACKS you for 3 damage");
+                                + "\nMisty: Where's my bike, twerp! \nMisty SMACKS you for 3 damage");
                         player.takeDamage(3);
                         break;
                 }
@@ -187,6 +192,9 @@ public class Main{
             else if (loc == 'c') {
                 store(player);
             }
+            if (loc == 'i' || loc == 'p' || loc == 'w') {
+				m.removeCharAtLoc(curr_loc);
+			}
         }
 
 
@@ -382,7 +390,7 @@ public class Main{
 		
 	public static Pokemon chooseRandomPokemon() {
 		ArrayList<Pokemon>wildPok = new ArrayList<Pokemon> (Arrays.asList(new Charmander(), new Squirtle(), new Ponyta(), new Squirtle(), new Staryu(), new Bulbasaur(), new Oddish()));
-		int index = rand.nextInt(8);
+		int index = rand.nextInt(7);
 		Pokemon randPok = wildPok.get(index); 
 		return randPok;
 	}
@@ -390,7 +398,15 @@ public class Main{
     public static void trainerAttack(Trainer t, Pokemon wild){
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
-        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()));
+        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1);
+        if (userPokemon.getHp() == 0){
+            System.out.println(userPokemon.getName() + " is dead. Please choose another option.");
+            int damage = (int)(Math.random() * ((10-5)+1)) + 5;
+            t.takeDamage(damage);
+            System.out.println(wild.getName() + " attacked " + t.getName() + " for " + damage + " damage!");
+            return;
+        }
+
         System.out.println(userPokemon.getName() + ", I choose you!");
         System.out.println(userPokemon.getAttackMenu());
 
@@ -399,14 +415,27 @@ public class Main{
             case 1:
                 System.out.println(userPokemon.getBasicMenu());
                 int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumBasicMenuItems());
-                userPokemon.basicAttack(wild, basicAttackChoice);
+                System.out.println(userPokemon.basicAttack(wild, basicAttackChoice));
                 break;
             case 2:
                 System.out.println(userPokemon.getSpecialMenu());
                 int specialAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumSpecialMenuItems());
-                userPokemon.specialAttack(wild, specialAttackChoice);
+                System.out.println(userPokemon.specialAttack(wild, specialAttackChoice));
                 break;
         }
+        
+        int randAttackType = rand.nextInt(2); 
+        switch (randAttackType){
+            case 0:
+                int randBasicAttack = rand.nextInt(wild.getNumBasicMenuItems()) + 1;
+                wild.basicAttack(userPokemon, randBasicAttack);
+                break;
+            case 1:
+                int randSpecialAttack = rand.nextInt(wild.getNumSpecialMenuItems()) + 1;
+                wild.specialAttack(userPokemon, randSpecialAttack);
+                break;
+        }
+
 
     }
 
