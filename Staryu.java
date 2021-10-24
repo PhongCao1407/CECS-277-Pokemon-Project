@@ -20,13 +20,13 @@ public class Staryu extends Pokemon implements Water {
     public String specialAttack(Pokemon p, int move){
         switch (move){
             case 1:
-                waterGun(p);
+                System.out.println(waterGun(p));
                 break;
             case 2:
-                bubbleBeam(p);
+                System.out.println(bubbleBeam(p));
                 break;
             case 3:
-                waterfall(p);
+                System.out.println(waterfall(p));
                 break;
             default:
                 return "That is not a valid move.";
