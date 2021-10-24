@@ -26,209 +26,362 @@ public class Main{
         Map m = new Map(); //create map
         m.loadMap(1); //load first map
         Trainer player = new Trainer(yourName, starter, m); //create trainer
-        //TODO the loop thing                                                   ->  gio: i implemented this in mainMenu method
+        
+
         while(true){ 
             System.out.println(player.toString());
             int menuChoice = mainMenu();
+            char loc = '0';
             switch (menuChoice){
                 case 1:
-                    player.goNorth();
+                    loc = player.goNorth();
                     break;
                 case 2:
-                    player.goNorth();
+                    loc = player.goSouth();
                     break;
                 case 3:
-                    player.goEast();
+                    loc = player.goEast();
                     break;
                 case 4:
-                    player.goWest();
+                    loc = player.goWest();
                     break;
                 case 5:
                     System.out.println("Game Over");
                     System.exit(0);
             }
-            
+            if (loc == 'n') { 
+                System.out.println("There's nothing here...");
+            }
+            else if (loc == 'i') {
+                int rand_item = rand.nextInt(2); //0-1
+                switch (rand_item) {
+                    case 0:
+                        player.receivePokeball();
+                        System.out.println("You found a poke ball");
+
+                    case 1:
+                        player.receivePotion();
+                        System.out.println("You found a potion");
+                }
+            }
+            else if (loc == 'w') {
+                String WPOK_MENU = "\nWhat do you want to do?\n" 
+                        + "1. Fight\n"
+                        + "2. Use Potion\n"
+                        + "3. Throw Poke Ball\n"
+                        + "4. Run Away";
+                
+                Pokemon wild = chooseRandomPokemon();
+                System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
+                int opt_num = CheckInput.getIntRange(1,4);
+                encounterLoop:
+                    while (true && (wild.getHp() != 0 || selecPok.getHp() !=0 )) {
+                        switch (opt_num) {
+                            case 1: //fight
+                                trainerAttack(player, wild);
+                            case 2: //use potion	
+                                if (player.hasPotion() == true) {
+                                    System.out.println("Which pokemon would you like to heal?");
+                                    int pokIndex = CheckInput.getIntRange(1, player.getNumPokemon());
+                                    player.usePotion(pokIndex-1);
+                                    System.out.println("Pokemon " + player.getPokemon(pokIndex-1) + " has healed from damage!");
+                                }
+                                else {
+                                    System.out.println("You don't have any potions :(");
+                                }
+                            case 3: //throw pokeball
+                                if (player.hasPokeball()) {
+                                    if (player.catchPokemon(wild) == true) {
+                                        System.out.println("You caught " + wild.getName() + "!");			
+                                        break encounterLoop;
+                                    }	
+                                }
+                                else {
+                                    System.out.println("You don't have any pokeballs :(");
+                                }
+                            case 4: //run away
+                                char unchanged = m.getCharAtLoc(player.getLocation());
+                                unchanged = 'w';
+                                int random_loc = rand.nextInt(5);
+                                Loop: //loops while the move is invalid
+                                while (true) {
+                                    switch (random_loc) {
+                                        case 1:
+                                            player.goNorth();
+                                            if (player.goNorth() != (char) 0) {
+                                                break Loop;
+                                            }
+                                            break;
+                                        case 2:
+                                            player.goSouth();
+                                            if (player.goSouth() != (char) 0) {
+                                                break Loop;
+                                            }
+                                        case 3:
+                                            player.goEast();
+                                            if (player.goEast() != (char) 0) {
+                                                break Loop;
+                                            }
+                                        case 4:
+                                            player.goWest();
+                                            if (player.goWest() != (char) 0) {
+                                                break Loop;
+                                            }
+                                    }
+                                }
+                        }
+                    }
+                //if selected pokemon is at 0 hp, then damage is done towards the player
+                if (selecPok.getHp() == 0) {
+                    int damage = (int)(Math.random() * ((10-5)+1)) + 5;
+                    player.takeDamage(damage);
+                }
+                //if wild pokemon is at 0 hp, then player must decide to catch that pokemon or not
+                if (wild.getHp() == 0) {
+                    System.out.println(wild.getName() + " is at 0 hp, would you like to catch or move on?"
+                            + "/n1. Catch /n2. Move on");
+                    int selec = in.nextInt();
+                    switch (selec) {
+                        case 1:
+                            player.catchPokemon(wild);
+                            System.out.println("You caught " + wild.getName());
+                            break;
+                        case 2: 
+                            System.out.println("Moving on...");
+                            break;
+                    }
+                }
+            }
+            else if (loc == 'p') {
+                int person = rand.nextInt(4); //0-3
+                switch (person) {
+                    case 0:
+                        System.out.println("You encountered Prof. Oak  testing a potion he created. "
+                                + "\nProf. Oak: Hello there, this experiment was a success! Here's the resulting potion, it's great for healing!");
+                        player.receivePotion();
+                        break;
+                    case 1:
+                        System.out.println("You ran into Brock attending a hurt pokemon "
+                                + "\nBrock:Hi " + player.getName() + "! Would you like to be of assistence in helping this poor creature?"
+                                + "\n1. Yes \n2. No"); 
+                        int opt_num = CheckInput.getIntRange(1,4);
+                        switch (opt_num) {
+                            case 1: System.out.println("Brock:Thanks for helping, here's $5"); 
+                                player.receiveMoney(5);
+                                break;
+                            case 2: System.out.println("Brock: Ok, maybe next time?");
+                                break;
+                        }
+                    case 2:
+                        System.out.println("You found Cilan."
+                                + "/nCilan: Great to see you! I have an extra poke ball and was searching for someone to give it to, here you go!");
+                        player.receivePokeball(); 
+                        break;
+                    case 3:
+                        System.out.println("You bumped into Misty."
+                                + "/nMisty: Where's my bike, twerp! /nMisty SMACKS you for 3 damage");
+                        player.takeDamage(3);
+                        break;
+                }
+            }
+            else if (loc == 'c') {
+                store(player);
+            }
         }
-        System.out.println(player.toString()); 
-		mainMenu(player,m);
-		if (mainMenu(player,m) == 0) {
-			System.out.println("Game over");
-		}
+
+
+        // System.out.println(player.toString()); 
+		// mainMenu(player,m);
+		// if (mainMenu(player,m) == 0) {
+		// 	System.out.println("Game over");
+		// }
+
     }
 
-    public static int mainMenu(Trainer player, Map m) { //note: on the UML, there are no parameters... not sure how to make that work 
-		String MAIN_MENU = "Main Menu:\n"
+    public static int mainMenu() {
+        String MAIN_MENU = "Main Menu:\n"
 				+ "1. Go North\n"
 				+ "2. Go South\n"
 				+ "3. Go East\n"
 				+ "4. Go West\n"
 				+ "5. Quit";
-		menuLoop:
-			while(true) {
-				System.out.println(player.toString() + "\n" + MAIN_MENU);
-				int direc_selec = CheckInput.getIntRange(1, 5); 
-				switch (direc_selec) {
-					case 1: player.goNorth(); break; 
-					case 2: player.goSouth(); break; 
-					case 3: player.goEast(); break;
-					case 4: player.goWest(); break;
-					case 5: break menuLoop; //breaks from while loop, returning 0 and ending game as shown in main
-				}
-				
-				/*!s and f functionalities are defined in trainer!*/
-				
-				//when location is n, player found nothing
-				if (player.goNorth() == 'n' || player.goSouth() == 'n'|| player.goEast() == 'n'|| player.goWest() == 'n') { 
-					System.out.println("There's nothing here...");
-				}
-				//when location is i, player found a random item (pokeball or potion) 
-				if (player.goNorth() == 'i' || player.goSouth() == 'i' || player.goEast() == 'i' || player.goWest() == 'i' ) {
-					int rand_item = rand.nextInt(2); //0-1
-					switch (rand_item) {
-						case 0:
-							player.receivePokeball();
-							System.out.println("You found a poke ball");
+        System.out.println(MAIN_MENU);
+        return CheckInput.getIntRange(1, 5);
+    }
 
-						case 1:
-							player.receivePotion();
-							System.out.println("You found a potion");
-					}
-				}
-				//when location is w, player found a wild pok, they are given various options to choose from until...
-				//they decide to run away or the wild pokemon's hp reaches 0  or the selected pokemon's hp reaches 0
-				if (player.goNorth() == 'w' || player.goSouth() == 'w' || player.goEast() == 'w' || player.goWest() == 'w' ) {
-					String WPOK_MENU = "\nWhat do you want to do?\n" 
-							+ "1. Fight\n"
-							+ "2. Use Potion\n"
-							+ "3. Throw Poke Ball\n"
-							+ "4. Run Away";
+    // public static int mainMenu(Trainer player, Map m) { //note: on the UML, there are no parameters... not sure how to make that work 
+	// 	String MAIN_MENU = "Main Menu:\n"
+	// 			+ "1. Go North\n"
+	// 			+ "2. Go South\n"
+	// 			+ "3. Go East\n"
+	// 			+ "4. Go West\n"
+	// 			+ "5. Quit";
+	// 	menuLoop:
+	// 		while(true) {
+	// 			System.out.println(player.toString() + "\n" + MAIN_MENU);
+	// 			int direc_selec = CheckInput.getIntRange(1, 5); 
+	// 			switch (direc_selec) {
+	// 				case 1: player.goNorth(); break; 
+	// 				case 2: player.goSouth(); break; 
+	// 				case 3: player.goEast(); break;
+	// 				case 4: player.goWest(); break;
+	// 				case 5: break menuLoop; //breaks from while loop, returning 0 and ending game as shown in main
+	// 			}
+				
+	// 			/*!s and f functionalities are defined in trainer!*/
+				
+	// 			//when location is n, player found nothing
+	// 			if (player.goNorth() == 'n' || player.goSouth() == 'n'|| player.goEast() == 'n'|| player.goWest() == 'n') { 
+	// 				System.out.println("There's nothing here...");
+	// 			}
+	// 			//when location is i, player found a random item (pokeball or potion) 
+	// 			if (player.goNorth() == 'i' || player.goSouth() == 'i' || player.goEast() == 'i' || player.goWest() == 'i' ) {
+	// 				int rand_item = rand.nextInt(2); //0-1
+	// 				switch (rand_item) {
+	// 					case 0:
+	// 						player.receivePokeball();
+	// 						System.out.println("You found a poke ball");
+
+	// 					case 1:
+	// 						player.receivePotion();
+	// 						System.out.println("You found a potion");
+	// 				}
+	// 			}
+	// 			//when location is w, player found a wild pok, they are given various options to choose from until...
+	// 			//they decide to run away or the wild pokemon's hp reaches 0  or the selected pokemon's hp reaches 0
+	// 			if (player.goNorth() == 'w' || player.goSouth() == 'w' || player.goEast() == 'w' || player.goWest() == 'w' ) {
+	// 				String WPOK_MENU = "\nWhat do you want to do?\n" 
+	// 						+ "1. Fight\n"
+	// 						+ "2. Use Potion\n"
+	// 						+ "3. Throw Poke Ball\n"
+	// 						+ "4. Run Away";
 					
-					Pokemon wild = chooseRandomPokemon();
-					System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
-					int opt_num = CheckInput.getIntRange(1,4);
-					encounterLoop:
-						while (true && (wild.getHp() != 0 || selecPok.getHp() !=0 )) {
-							switch (opt_num) {
-								case 1: //fight
-									trainerAttack(player, wild);
-								case 2: //use potion	
-									if (player.hasPotion() == true) {
-										System.out.println("Which pokemon would you like to heal?");
-										int pokIndex = CheckInput.getIntRange(1, player.getNumPokemon());
-										player.usePotion(pokIndex-1);
-										System.out.println("Pokemon " + player.getPokemon(pokIndex-1) + " has healed from damage!");
-									}
-									else {
-										System.out.println("You don't have any potions :(");
-									}
-								case 3: //throw pokeball
-									if (player.hasPokeball()) {
-										if (player.catchPokemon(wild) == true) {
-											System.out.println("You caught " + wild.getName() + "!");			
-											break encounterLoop;
-										}	
-									}
-									else {
-										System.out.println("You don't have any pokeballs :(");
-									}
-								case 4: //run away
-									char unchanged = m.getCharAtLoc(player.getLocation());
-									unchanged = 'w';
-									int random_loc = rand.nextInt(5);
-									Loop: //loops while the move is invalid
-									while (true) {
-										switch (random_loc) {
-											case 1:
-												player.goNorth();
-												if (player.goNorth() != (char) 0) {
-													break Loop;
-												}
-												break;
-											case 2:
-												player.goSouth();
-												if (player.goSouth() != (char) 0) {
-													break Loop;
-												}
-											case 3:
-												player.goEast();
-												if (player.goEast() != (char) 0) {
-													break Loop;
-												}
-											case 4:
-												player.goWest();
-												if (player.goWest() != (char) 0) {
-													break Loop;
-												}
-										}
-									}
-							}
-						}
-					//if selected pokemon is at 0 hp, then damage is done towards the player
-					if (selecPok.getHp() == 0) {
-				        int damage = (int)(Math.random() * ((10-5)+1)) + 5;
-				        player.takeDamage(damage);
-					}
-					//if wild pokemon is at 0 hp, then player must decide to catch that pokemon or not
-					if (wild.getHp() == 0) {
-						System.out.println(wild.getName() + " is at 0 hp, would you like to catch or move on?"
-								+ "/n1. Catch /n2. Move on");
-						int selec = in.nextInt();
-						switch (selec) {
-							case 1:
-								player.catchPokemon(wild);
-								System.out.println("You caught " + wild.getName());
-								break;
-							case 2: 
-								System.out.println("Moving on...");
-								break;
-						}
-					}
-				}
-				//when location is p, player encounters a person who gives items or does damage
-				if (player.goNorth() == 'p' || player.goSouth() == 'p' || player.goEast() == 'p' || player.goWest() == 'p') {
-					int person = rand.nextInt(4); //0-3
-					switch (person) {
-						case 0:
-							System.out.println("You encountered Prof. Oak  testing a potion he created. "
-									+ "\nProf. Oak: Hello there, this experiment was a success! Here's the resulting potion, it's great for healing!");
-							player.receivePotion();
-							break;
-						case 1:
-							System.out.println("You ran into Brock attending a hurt pokemon "
-									+ "\nBrock:Hi " + player.getName() + "! Would you like to be of assistence in helping this poor creature?"
-									+ "\n1. Yes \n2. No"); 
-							int opt_num = CheckInput.getIntRange(1,4);
-							switch (opt_num) {
-								case 1: System.out.println("Brock:Thanks for helping, here's $5"); 
-									player.receiveMoney(5);
-									break;
-								case 2: System.out.println("Brock: Ok, maybe next time?");
-									break;
-							break;
-							}
-						case 2:
-							System.out.println("You found Cilan."
-									+ "/nCilan: Great to see you! I have an extra poke ball and was searching for someone to give it to, here you go!");
-							player.receivePokeball(); 
-							break;
-						case 3:
-							System.out.println("You bumped into Misty."
-									+ "/nMisty: Where's my bike, twerp! /nMisty SMACKS you for 3 damage");
-							player.takeDamage(3);
-							break;
-					}
-				}
-				//when location is c player goes to city 
-				if (player.goNorth() == 'c' || player.goSouth() == 'c' || player.goEast() == 'c' || player.goWest() == 'c') {
-					store(player);
-				}
-			}
+	// 				Pokemon wild = chooseRandomPokemon();
+	// 				System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
+	// 				int opt_num = CheckInput.getIntRange(1,4);
+	// 				encounterLoop:
+	// 					while (true && (wild.getHp() != 0 || selecPok.getHp() !=0 )) {
+	// 						switch (opt_num) {
+	// 							case 1: //fight
+	// 								trainerAttack(player, wild);
+	// 							case 2: //use potion	
+	// 								if (player.hasPotion() == true) {
+	// 									System.out.println("Which pokemon would you like to heal?");
+	// 									int pokIndex = CheckInput.getIntRange(1, player.getNumPokemon());
+	// 									player.usePotion(pokIndex-1);
+	// 									System.out.println("Pokemon " + player.getPokemon(pokIndex-1) + " has healed from damage!");
+	// 								}
+	// 								else {
+	// 									System.out.println("You don't have any potions :(");
+	// 								}
+	// 							case 3: //throw pokeball
+	// 								if (player.hasPokeball()) {
+	// 									if (player.catchPokemon(wild) == true) {
+	// 										System.out.println("You caught " + wild.getName() + "!");			
+	// 										break encounterLoop;
+	// 									}	
+	// 								}
+	// 								else {
+	// 									System.out.println("You don't have any pokeballs :(");
+	// 								}
+	// 							case 4: //run away
+	// 								char unchanged = m.getCharAtLoc(player.getLocation());
+	// 								unchanged = 'w';
+	// 								int random_loc = rand.nextInt(5);
+	// 								Loop: //loops while the move is invalid
+	// 								while (true) {
+	// 									switch (random_loc) {
+	// 										case 1:
+	// 											player.goNorth();
+	// 											if (player.goNorth() != (char) 0) {
+	// 												break Loop;
+	// 											}
+	// 											break;
+	// 										case 2:
+	// 											player.goSouth();
+	// 											if (player.goSouth() != (char) 0) {
+	// 												break Loop;
+	// 											}
+	// 										case 3:
+	// 											player.goEast();
+	// 											if (player.goEast() != (char) 0) {
+	// 												break Loop;
+	// 											}
+	// 										case 4:
+	// 											player.goWest();
+	// 											if (player.goWest() != (char) 0) {
+	// 												break Loop;
+	// 											}
+	// 									}
+	// 								}
+	// 						}
+	// 					}
+	// 				//if selected pokemon is at 0 hp, then damage is done towards the player
+	// 				if (selecPok.getHp() == 0) {
+	// 			        int damage = (int)(Math.random() * ((10-5)+1)) + 5;
+	// 			        player.takeDamage(damage);
+	// 				}
+	// 				//if wild pokemon is at 0 hp, then player must decide to catch that pokemon or not
+	// 				if (wild.getHp() == 0) {
+	// 					System.out.println(wild.getName() + " is at 0 hp, would you like to catch or move on?"
+	// 							+ "/n1. Catch /n2. Move on");
+	// 					int selec = in.nextInt();
+	// 					switch (selec) {
+	// 						case 1:
+	// 							player.catchPokemon(wild);
+	// 							System.out.println("You caught " + wild.getName());
+	// 							break;
+	// 						case 2: 
+	// 							System.out.println("Moving on...");
+	// 							break;
+	// 					}
+	// 				}
+	// 			}
+	// 			//when location is p, player encounters a person who gives items or does damage
+	// 			if (player.goNorth() == 'p' || player.goSouth() == 'p' || player.goEast() == 'p' || player.goWest() == 'p') {
+	// 				int person = rand.nextInt(4); //0-3
+	// 				switch (person) {
+	// 					case 0:
+	// 						System.out.println("You encountered Prof. Oak  testing a potion he created. "
+	// 								+ "\nProf. Oak: Hello there, this experiment was a success! Here's the resulting potion, it's great for healing!");
+	// 						player.receivePotion();
+	// 						break;
+	// 					case 1:
+	// 						System.out.println("You ran into Brock attending a hurt pokemon "
+	// 								+ "\nBrock:Hi " + player.getName() + "! Would you like to be of assistence in helping this poor creature?"
+	// 								+ "\n1. Yes \n2. No"); 
+	// 						int opt_num = CheckInput.getIntRange(1,4);
+	// 						switch (opt_num) {
+	// 							case 1: System.out.println("Brock:Thanks for helping, here's $5"); 
+	// 								player.receiveMoney(5);
+	// 								break;
+	// 							case 2: System.out.println("Brock: Ok, maybe next time?");
+	// 								break;
+	// 						break;
+	// 						}
+	// 					case 2:
+	// 						System.out.println("You found Cilan."
+	// 								+ "/nCilan: Great to see you! I have an extra poke ball and was searching for someone to give it to, here you go!");
+	// 						player.receivePokeball(); 
+	// 						break;
+	// 					case 3:
+	// 						System.out.println("You bumped into Misty."
+	// 								+ "/nMisty: Where's my bike, twerp! /nMisty SMACKS you for 3 damage");
+	// 						player.takeDamage(3);
+	// 						break;
+	// 				}
+	// 			}
+	// 			//when location is c player goes to city 
+	// 			if (player.goNorth() == 'c' || player.goSouth() == 'c' || player.goEast() == 'c' || player.goWest() == 'c') {
+	// 				store(player);
+	// 			}
+	// 		}
 	
-		return 0;
-	}
+	// 	return 0;
+	// }
 		
 	public static Pokemon chooseRandomPokemon() {
-		ArrayList<Pokemon>wildPok = new ArrayList<Pokemon> (Arrays.asList(new Charmander(), new Squirtle(), new Ponyta(), new Squirtle(), new Strayu(), new Bulbasaur(), new Oddish()));
+		ArrayList<Pokemon>wildPok = new ArrayList<Pokemon> (Arrays.asList(new Charmander(), new Squirtle(), new Ponyta(), new Squirtle(), new Staryu(), new Bulbasaur(), new Oddish()));
 		int index = rand.nextInt(8);
 		Pokemon randPok = wildPok.get(index); 
 		return randPok;

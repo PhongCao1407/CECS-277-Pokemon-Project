@@ -147,8 +147,7 @@ public class Trainer extends Entity {
 		Point pastloc = getLocation();
 		int y = getLocation().y;
 		if (y > 0) {
-			getLocation().translate(0, -1); //to go up, decrement value
-			map.loadMap(mapNum);
+			this.loc.translate(0, -1); //to go up, decrement value
 			if (map.getCharAtLoc(getLocation()) == 'f') {
 				if (mapNum<3) {
 					 map.loadMap(mapNum++);
@@ -167,6 +166,7 @@ public class Trainer extends Entity {
 			}
 		
 		else {
+			System.out.println("You cannot go that way.");
 			return (char) 0;
 		}
 	}
@@ -181,8 +181,7 @@ public class Trainer extends Entity {
 		Point pastloc = getLocation();
 		int y = getLocation().y;
 		if (y < 4) {
-			getLocation().translate(0, +1);
-			map.loadMap(mapNum);
+			this.loc.translate(0, +1);
 			if (map.getCharAtLoc(getLocation()) == 'f') {
 				if (mapNum<3) {
 					 map.loadMap(mapNum++);
@@ -214,8 +213,7 @@ public class Trainer extends Entity {
 		Point pastloc = getLocation();
 		int x = getLocation().x;
 		if (x < 4) {
-			getLocation().translate(+1, 0);
-			map.loadMap(mapNum);
+			this.loc.translate(+1, 0);
 			if (map.getCharAtLoc(getLocation()) == 'f') {
 				if (mapNum<3) {
 					 map.loadMap(mapNum++);
@@ -248,8 +246,7 @@ public class Trainer extends Entity {
 		Point pastloc = getLocation();
 		int x = getLocation().x;
 		if (x > 0) {
-			getLocation().translate(-1, 0);
-			map.loadMap(mapNum);
+			this.loc.translate(-1, 0);
 			if (map.getCharAtLoc(getLocation()) == 'f') {
 				if (mapNum<3) {
 					 map.loadMap(mapNum++);

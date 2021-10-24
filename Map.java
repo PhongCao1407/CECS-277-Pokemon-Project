@@ -5,11 +5,10 @@ import java.io.FileNotFoundException;
 
 public class Map {
     
-    private char [][] map;
-    private boolean [][] revealed;
+    private char [][] map = new char[5][5];
+    private boolean [][] revealed = new boolean[5][5];
 
     public Map(){
-
 
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
@@ -49,10 +48,12 @@ public class Map {
             for(int j = 0; j < 5; j++){
                 if(j == p.x && i == p.y){
                     mapString += '*';
-                }else if(this.revealed[j][i] == false){
-                    mapString += 'x';
+                }else if(this.revealed[i][j] == true){
+                    mapString += this.map[i][j];
                 }else{
-                    mapString += this.map[j][i];
+                    System.out.println("here " + i +  " " + j);
+                    mapString += 'x';
+                    
                 }
                 mapString += ' ';
             }
