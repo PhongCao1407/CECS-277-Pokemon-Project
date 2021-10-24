@@ -54,7 +54,6 @@ public class Main{
 		if (mainMenu(player,m) == 0) {
 			System.out.println("Game over");
 		}
-        
     }
 
     public static int mainMenu(Trainer player, Map m) { //note: on the UML, there are no parameters... not sure how to make that work 
@@ -111,7 +110,7 @@ public class Main{
 						while (true && (wild.getHp() != 0 || selecPok.getHp() !=0 )) {
 							switch (opt_num) {
 								case 1: //fight
-									trainerAttack(t, wild);
+									trainerAttack(player, wild);
 								case 2: //use potion	
 									if (player.hasPotion() == true) {
 										System.out.println("Which pokemon would you like to heal?");
@@ -221,7 +220,7 @@ public class Main{
 				}
 				//when location is c player goes to city 
 				if (player.goNorth() == 'c' || player.goSouth() == 'c' || player.goEast() == 'c' || player.goWest() == 'c') {
-					store(t);
+					store(player);
 				}
 			}
 	
