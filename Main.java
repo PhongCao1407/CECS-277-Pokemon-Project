@@ -18,8 +18,30 @@ public class Main{
         }
         Map m = new Map(); //create map
         m.loadMap(1); //load first map
-        Trainer you = new Trainer(yourName, starter, m); //create trainer
+        Trainer player = new Trainer(yourName, starter, m); //create trainer
         //TODO the loop thing
+        while(true){
+            System.out.println(player.toString());
+            int menuChoice = mainMenu();
+            switch (menuChoice){
+                case 1:
+                    player.goNorth();
+                    break;
+                case 2:
+                    player.goNorth();
+                    break;
+                case 3:
+                    player.goEast();
+                    break;
+                case 4:
+                    player.goWest();
+                    break;
+                case 5:
+                    System.out.println("Game Over");
+                    System.exit(0);
+            }
+            
+        }
         
     }
 
