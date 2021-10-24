@@ -1,8 +1,6 @@
-import java.util.*;
 
 public class Main{
 
-    static Scanner input = new Scanner(System.in);
     public static void main(String[] args){
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
         String yourName = CheckInput.getString(); //get name
@@ -22,6 +20,7 @@ public class Main{
         m.loadMap(1); //load first map
         Trainer you = new Trainer(yourName, starter, m); //create trainer
         //TODO the loop thing
+        
     }
 
     public static int mainMenu(){
@@ -34,23 +33,22 @@ public class Main{
     }
 
     public static void trainerAttack(Trainer t, Pokemon wild){
-
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
-        Pokemon userPokemon = t.getPokemon(input.nextInt());
+        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()));
         System.out.println(userPokemon.getName() + ", I choose you!");
         System.out.println(userPokemon.getAttackMenu());
 
-        int attackMenu = input.nextInt();
+        int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems());
         switch(attackMenu){
             case 1:
                 System.out.println(userPokemon.getBasicMenu());
-                int basicAttackChoice = input.nextInt();
+                int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumBasicMenuItems());
                 userPokemon.basicAttack(wild, basicAttackChoice);
                 break;
             case 2:
                 System.out.println(userPokemon.getSpecialMenu());
-                int specialAttackChoice = input.nextInt();
+                int specialAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumSpecialMenuItems());
                 userPokemon.specialAttack(wild, specialAttackChoice);
                 break;
         }
