@@ -158,7 +158,7 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w' && map.getCharAtLoc(getLocation()) != 'n') {
+			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
 				map.removeCharAtLoc(pastloc);
 			}
 			
@@ -192,7 +192,7 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w' && map.getCharAtLoc(getLocation()) != 'n') {
+			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
 				map.removeCharAtLoc(pastloc);
 			}
 			map.reveal(pastloc);
@@ -226,7 +226,7 @@ public class Trainer extends Entity {
 				}
 			}
 			
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w' && map.getCharAtLoc(getLocation()) != 'n') {
+			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
 				map.removeCharAtLoc(pastloc);
 			}
 			map.reveal(pastloc);
@@ -259,7 +259,7 @@ public class Trainer extends Entity {
 					 map.loadMap(mapNum);
 				}
 			}
-			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w' && map.getCharAtLoc(getLocation()) != 'n') {
+			else if (map.getCharAtLoc(pastloc) == 'i' || map.getCharAtLoc(pastloc) == 'p' || map.getCharAtLoc(pastloc) == 'w') {
 				map.removeCharAtLoc(pastloc);
 			}
 			map.reveal(pastloc);
