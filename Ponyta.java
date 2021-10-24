@@ -16,13 +16,13 @@ public class Ponyta extends Pokemon implements Fire {
     public String specialAttack(Pokemon p, int move){
         switch (move){
             case 1:
-                ember(p);
+                System.out.println(ember(p));
                 break;
             case 2:
-                fireBlast(p);
+                System.out.println(fireBlast(p));
                 break;
             case 3:
-                firePunch(p);
+                System.out.println(firePunch(p));
                 break;
             default:
                 return "That is not a valid move.";
