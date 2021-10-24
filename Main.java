@@ -19,8 +19,8 @@ public class Main{
             case 3: starter = new Squirtle(); break;
         }
         Map m = new Map(); //create map
+        m.loadMap(1); //load first map
         Trainer you = new Trainer(yourName, starter, m); //create trainer
-        you.map.loadMap(1); //load first map
         //TODO the loop thing
     }
 
