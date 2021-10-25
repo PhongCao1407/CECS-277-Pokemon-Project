@@ -25,6 +25,7 @@ public class Main{
             case 3: starter = new Squirtle(); break;
         }
         Map m = new Map(); //create map
+        int currMapNum = 1;
         m.loadMap(1); //load first map
         Trainer player = new Trainer(yourName, starter, m); //create trainer
         
@@ -109,32 +110,33 @@ public class Main{
                             case 4: //run away
                                 char unchanged = m.getCharAtLoc(player.getLocation());
                                 unchanged = 'w';
-                                int random_loc = rand.nextInt(5);
+                                int random_loc = rand.nextInt(4);
                                 Loop: //loops while the move is invalid
                                 while (true) {
                                     switch (random_loc) {
-                                        case 1:
-                                            player.goNorth();
+                                        
+                                        case 0:
                                             if (player.goNorth() != (char) 0) {
                                                 break Loop;
                                             }
                                             break;
-                                        case 2:
-                                            player.goSouth();
+                                        case 1:
                                             if (player.goSouth() != (char) 0) {
                                                 break Loop;
                                             }
-                                        case 3:
-                                            player.goEast();
+                                            break;
+                                        case 2:
                                             if (player.goEast() != (char) 0) {
                                                 break Loop;
                                             }
-                                        case 4:
-                                            player.goWest();
+                                            break;
+                                        case 3:
                                             if (player.goWest() != (char) 0) {
                                                 break Loop;
                                             }
+                                            break;
                                     }
+                                    random_loc = rand.nextInt(4);
                                 }
                                 break encounterLoop;
                         }
@@ -183,6 +185,18 @@ public class Main{
             else if (loc == 'c') {
                 store(player);
             }
+            else if (loc == 'f') {
+				if (currMapNum<3) {
+                    currMapNum += 1;
+					m.loadMap(currMapNum);
+                    m.reveal(m.findStart());
+				}
+				else {
+					 currMapNum = 1;
+					 m.loadMap(currMapNum);
+                     m.reveal(m.findStart());
+				}
+			}
             if (loc == 'i' || loc == 'p' || loc == 'w') {
 				m.removeCharAtLoc(curr_loc);
 			}
@@ -260,7 +274,7 @@ public class Main{
      */
     public static void store(Trainer t){
         String welcomeToCity = "You\'ve entered the city.\nWhere would you like to go?\n1. Store\n2. Pokemon Hospital";
-        String storeClerk = "Hello! What can I help you with?\n1. Buy Potions - $5\n2. Buy Poke Balls - $3\n3.Exit";
+        String storeClerk = "Hello! What can I help you with?\n1. Buy Potions - $5\n2. Buy Poke Balls - $3\n3. Exit";
         String hospitalNurse = "Hello! Welcome to the Pokemon Hospital.\nI\'ll fix your poor pokemon up in a jiffy!\nThere you go! See you again soon.";
         int in;
         boolean moneySpent;

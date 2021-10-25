@@ -148,15 +148,7 @@ public class Trainer extends Entity {
 		int y = getLocation().y;
 		if (y > 0) {
 			this.loc.translate(0, -1); //to go up, decrement value
-			if (map.getCharAtLoc(getLocation()) == 'f') {
-				if (mapNum<3) {
-					 map.loadMap(mapNum++);
-				}
-				else {
-					 mapNum = 1;
-					 map.loadMap(mapNum);
-				}
-			}
+			
 			
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
@@ -179,15 +171,7 @@ public class Trainer extends Entity {
 		int y = getLocation().y;
 		if (y < 4) {
 			this.loc.translate(0, +1);
-			if (map.getCharAtLoc(getLocation()) == 'f') {
-				if (mapNum<3) {
-					 map.loadMap(mapNum++);
-				}
-				else {
-					 mapNum = 1;
-					 map.loadMap(mapNum);
-				}
-			}
+			
 
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
@@ -209,15 +193,6 @@ public class Trainer extends Entity {
 		int x = getLocation().x;
 		if (x < 4) {
 			this.loc.translate(+1, 0);
-			if (map.getCharAtLoc(getLocation()) == 'f') {
-				if (mapNum<3) {
-					 map.loadMap(mapNum++);
-				}
-				else {
-					 mapNum = 1;
-					 map.loadMap(mapNum);
-				}
-			}
 			
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
@@ -239,15 +214,6 @@ public class Trainer extends Entity {
 		int x = getLocation().x;
 		if (x > 0) {
 			this.loc.translate(-1, 0);
-			if (map.getCharAtLoc(getLocation()) == 'f') {
-				if (mapNum<3) {
-					 map.loadMap(mapNum++);
-				}
-				else {
-					 mapNum = 1;
-					 map.loadMap(mapNum);
-				}
-			}
 
 			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
