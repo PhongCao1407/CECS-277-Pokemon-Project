@@ -21,7 +21,11 @@ public class Map {
 
         String fileName = "Area" + Integer.toString(mapNum) + ".txt";
         File fileIn = new File(fileName);
-
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                this.revealed[j][i] = false; //initialize revealed to false
+            }
+        }
         try{
             Scanner fileScan = new Scanner(fileIn);
             int lineNum = 0;
