@@ -16,13 +16,13 @@ public class Oddish extends Pokemon implements Grass {
     public String specialAttack(Pokemon p, int move){
         switch (move){
             case 1:
-                vineWhip(p);
+                System.out.println(vineWhip(p));
                 break;
             case 2:
-                razorLeaf(p);
+                System.out.println(razorLeaf(p));
                 break;
             case 3:
-                solarBeam(p);
+                System.out.println(solarBeam(p));
                 break;
             default:
                 return "That is not a valid move.";
