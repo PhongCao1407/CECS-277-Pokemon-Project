@@ -29,7 +29,7 @@ public class Charmander extends Pokemon implements Fire {
             default:
                 return "That is not a valid move.";
         }
-        return p.getName() + " is hurt.";
+        return p.toString();
     }
 
 	@Override
