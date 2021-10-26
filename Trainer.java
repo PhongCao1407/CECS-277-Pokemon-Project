@@ -16,6 +16,7 @@ public class Trainer extends Entity {
 	Random rand = new Random();
 
 	/**
+	 * class constructor
 	 * @param n		trainer's name 
 	 * @param p		initial pokemon selected 
 	 * @param m		Copy of map 
@@ -53,7 +54,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * increments user's "wallet" when they receive money
-	 * 	@param amt
+	 * @param amt
 	 */	
 	public void receiveMoney(int amt) {
 		money += amt;
@@ -86,7 +87,7 @@ public class Trainer extends Entity {
 	public void usePotion(int pokeIndex) {
 		
 		if (hasPotion()) {
-			getPokemon(pokeIndex).heal(); //subtract index by 1 if player's range excludes 0
+			getPokemon(pokeIndex).heal();
 			potions -= 1;
 		}
 	}
@@ -105,7 +106,7 @@ public class Trainer extends Entity {
 	}
 	
 	/**
-	 * 	increments user's amount of pokeballs when they receive a pokeball	
+	 * increments user's amount of pokeballs when they receive a pokeball	
 	 */
 	public void receivePokeball() {
 		pokeballs += 1;
@@ -139,8 +140,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * decrements y value of point, causing the user to move one space upward on the map IF they are located below row 0 of the map
-	 * Switches to different map depending on location of user (if they land on f), reveals characters found at locations they have visited, and removes certain visited characters
-	 * functionality of each character will be further defined in main
+	 * reveals characters found at locations they have visited
 	 * @return character found at map when user goes north
 	 */
 	public char goNorth() {
@@ -162,8 +162,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * increments y value of point, causing the user to move one space downward on the map IF they are located above row 4 of the map
-	 * Switches to a different map depending on location of user (if they land on f), reveals characters found at locations they have visited, and removes certain visited characters
-	 * functionality of each character will be further defined in main
+	 * reveals characters found at locations they have visited
 	 * @return character found at map when user goes south
 	 */
 	public char goSouth() {
@@ -184,8 +183,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * increments x value of point, causing the user to move one space rightward on the map IF they are not located at the rightmost column of the map
-	 * Switches to a different map depending on location of user (if they land on f), reveals characters found at locations they have visited, and removes certain visited characters
-	 * functionality of each character will be further defined in main
+	 * reveals characters found at locations they have visited
 	 * @return character found at map when user goes east
 	 */	
 	public char goEast() {
@@ -205,8 +203,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * decrements x value of point, causing the user to move one space leftward on the map IF they are not located at the leftmost column of the map
-	 * Switches to a different map depending on location of user (if they land on f), reveals characters found at locations they have visited, and removes certain visited characters
-	 * functionality of each character will be further defined in main
+	 * reveals characters found at locations they have visited
 	 * @return character found at map when user goes west
 	 */	
 	public char goWest() {
@@ -242,7 +239,7 @@ public class Trainer extends Entity {
 	}
 	
 	/**
-	 * gets pokemon found at index _ of the array list (range of index: 0 - size of list minus 1)
+	 * gets pokemon found at index _ of the array list 
 	 * @param index
 	 * @return pokemon.get(index)
 	 */
@@ -265,8 +262,7 @@ public class Trainer extends Entity {
 	}
 	
 	/**
-	 * @return trainer's summary (name, hp, inventory, pokemon list, map)
-	 * 
+	 * @return trainer's summary (name, hp, inventory, pokemon list, map) 
 	 */
 	@Override
 	public String toString() {
