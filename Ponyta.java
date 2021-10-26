@@ -1,18 +1,32 @@
 public class Ponyta extends Pokemon implements Fire {
-	
+   /**
+    * class constructor 
+    */		
 	public Ponyta() {
 		super("Ponyta");
 		this.pokemonType = "Fire";
 	}
 	
+   /**
+    * fire type special menu 
+    * @return Fire.specialMenu
+    */	
     public String getSpecialMenu(){
         return Fire.specialMenu;
     }
-
+	
+   /**
+    * amount of options in special menu 
+    * @return 3
+    */
     public int getNumSpecialMenuItems(){
         return 3;
     }
     
+   /**
+    * a special attack move is selected by user
+    * @return pokemon info and attack message or invalid message
+    */	
     public String specialAttack(Pokemon p, int move){
         switch (move){
             case 1:
@@ -30,6 +44,10 @@ public class Ponyta extends Pokemon implements Fire {
         return p.toString();
     }
 
+   	/**
+	 * attack type ember causes damage between the range 0-3
+	 * @return attack message
+	 */ 	
 	@Override
 	public String ember(Pokemon p) {
 		int min = 0;
@@ -39,7 +57,11 @@ public class Ponyta extends Pokemon implements Fire {
 		p.takeDamage(damage);
 		return "Ponyta made an EMBER ATTACK to " + p.getName() + " with damage " + damage + ".";
 	}
-	
+
+   	/**
+	 * attack type fireBlast causes damage between the range 1-4
+	 * @return attack message
+	 */		
 	@Override
 	public String fireBlast(Pokemon p) {
 		int min = 2;
@@ -49,7 +71,11 @@ public class Ponyta extends Pokemon implements Fire {
 		p.takeDamage(damage);
 		return "Ponyta BLASTED FIRE to " + p.getName() + " with damage " + damage + ".";
 	}
-	
+
+   	/**
+	 * attack type firePunch causes damage between the range 1-3
+	 * @return attack message
+	 */	
 	@Override
 	public String firePunch(Pokemon p) {
 		int min = 1;
