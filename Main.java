@@ -224,12 +224,18 @@ public class Main{
 		return randPok;
 	}
 
+    /**
+     * attack the given wild Pokemon with a Pokemon from the trainer 
+     * @param t the trainer attacking
+     * @param wild the wild Pokemon to be attacked
+     */
     public static void trainerAttack(Trainer t, Pokemon wild){
+        //Let the player choose a Pokemon from the trainer
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
-        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1);
-        if (userPokemon.getHp() == 0){
-            System.out.println(userPokemon.getName() + " is dead. Please choose another option.");
+        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1); //Get chosen Pokemon
+        if (userPokemon.getHp() == 0){ //Check if the chosen Pokemon is fainted. If it is, deal damage to the trainer
+            System.out.println(userPokemon.getName() + " is fainted. Please choose another option.");
             int damage = (int)(Math.random() * ((10-5)+1)) + 5;
             t.takeDamage(damage);
             System.out.println(wild.getName() + " attacked " + t.getName() + " for " + damage + " damage!");
@@ -239,6 +245,7 @@ public class Main{
         System.out.println(userPokemon.getName() + ", I choose you!");
         System.out.println(userPokemon.getAttackMenu());
 
+        //Attack the wild Pokemon
         int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems());
         switch(attackMenu){
             case 1:
@@ -253,6 +260,7 @@ public class Main{
                 break;
         }
         
+        //The wild Pokemon attack back
         int randAttackType = rand.nextInt(2); 
         switch (randAttackType){
             case 0:
