@@ -6,8 +6,7 @@ import java.awt.Point;
 
 public class Main{
     static final Scanner in = new Scanner(System.in);
-	static final Random rand = new Random();
-	static Pokemon selecPok;
+    static final Random rand = new Random();
     
     public static void main(String[] args){
         System.out.println("                                      ,'\\\n        _.----.        ____         ,'  _\\   ___    ___     ____\n    _,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.\n    \\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n     \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n       \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n        \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n         \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n          \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n           \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n            \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n                                    `'                            '-._|");
@@ -222,7 +221,11 @@ public class Main{
 
 
     }
-
+	
+   /**
+    * displays main menu options (list of directions the user may travel)
+    * @return user's selected option number
+    */
     public static int mainMenu() {
         String MAIN_MENU = "Main Menu:\n"
 				+ "1. Go North\n"
@@ -233,13 +236,17 @@ public class Main{
         System.out.println(MAIN_MENU);
         return CheckInput.getIntRange(1, 5);
     }
-		
-	public static Pokemon chooseRandomPokemon() {
+	
+   /**
+    * from an arraylist, a random pokemon is selected (used for generating a wild pokemon)
+    * @return randPok
+    */		
+    public static Pokemon chooseRandomPokemon() {
 		ArrayList<Pokemon>wildPok = new ArrayList<Pokemon> (Arrays.asList(new Charmander(), new Squirtle(), new Ponyta(), new Squirtle(), new Staryu(), new Bulbasaur(), new Oddish()));
 		int index = rand.nextInt(7);
 		Pokemon randPok = wildPok.get(index); 
 		return randPok;
-	}
+    }
 
     /**
      * attack the given wild Pokemon with a Pokemon from the trainer 
