@@ -117,15 +117,16 @@ public class Trainer extends Entity {
 	 * @return true/false	
 	 */
 	public boolean catchPokemon(Pokemon p) {
-		double percent = ((p.getMaxHp() - p.getHp()) / p.getMaxHp()) * 100;
-		if ((rand.nextInt(100) + 1) > percent && hasPokeball()){
+		double percent = ((double)(p.getMaxHp() - p.getHp()) / (double)p.getMaxHp()) * (double)100;
+		int randNum = rand.nextInt(100) + 1;
+		if ((randNum < percent) && hasPokeball()){
 			pokemon.add(p);
 			pokeballs -= 1;
 			return true;
 		}
 		
 		else {
-		return false;
+			return false;
 		}
 	}
 	
@@ -144,13 +145,10 @@ public class Trainer extends Entity {
 	 * @return character found at map when user goes north
 	 */
 	public char goNorth() {
-		Point pastloc = getLocation();
 		int y = getLocation().y;
 		if (y > 0) {
 			this.loc.translate(0, -1); //to go up, decrement value
 			
-			
-			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 			}
 		
@@ -167,13 +165,10 @@ public class Trainer extends Entity {
 	 * @return character found at map when user goes south
 	 */
 	public char goSouth() {
-		Point pastloc = getLocation();
 		int y = getLocation().y;
 		if (y < 4) {
 			this.loc.translate(0, +1);
 			
-
-			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 		}
 		else {
@@ -189,12 +184,10 @@ public class Trainer extends Entity {
 	 * @return character found at map when user goes east
 	 */	
 	public char goEast() {
-		Point pastloc = this.loc;
 		int x = getLocation().x;
 		if (x < 4) {
 			this.loc.translate(+1, 0);
-			
-			map.reveal(pastloc);
+
 			return map.getCharAtLoc(getLocation());
 		}
 		else {
@@ -210,12 +203,10 @@ public class Trainer extends Entity {
 	 * @return character found at map when user goes west
 	 */	
 	public char goWest() {
-		Point pastloc = getLocation();
 		int x = getLocation().x;
 		if (x > 0) {
 			this.loc.translate(-1, 0);
 
-			map.reveal(pastloc);
 			return map.getCharAtLoc(getLocation());
 		}
 		else {

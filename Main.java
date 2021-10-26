@@ -10,6 +10,7 @@ public class Main{
 	static Pokemon selecPok;
     
     public static void main(String[] args){
+        System.out.println("                                      ,'\\\n        _.----.        ____         ,'  _\\   ___    ___     ____\n    _,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.\n    \\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n     \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n       \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n        \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n         \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n          \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n           \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n            \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n                                    `'                            '-._|");
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
         String yourName = CheckInput.getString(); //get name
 
@@ -20,21 +21,31 @@ public class Main{
         Pokemon starter = new Charmander(); //predeclare starter pokemon
 
         switch(firstPokemon){ //actually declare starter pokemon
-            case 1: starter = new Charmander(); break;
-            case 2: starter = new Bulbasaur(); break;
-            case 3: starter = new Squirtle(); break;
+            case 1: 
+                starter = new Charmander(); 
+                System.out.println("             _.--\"\"`-..\n           ,'          `.\n         ,'          __  `.\n        /|          \" __   \\\n       , |           / |.   .\n       |,'          !_.'|   |\n     ,'             '   |   |\n     /              |`--'|   |\n    |                `---'   |\n    .   ,                   |                       ,\".\n     ._     '           _'  |                    , ' \\ `\n `.. `.`-...___,...---\"\"    |       __,.        ,`\"   L,|\n |, `- .`._        _,-,.'   .  __.-'-. /        .   ,    \\\n-:..     `. `-..--_.,.<       `\"      / `.        `-/ |   .\n  `,         \"\"\"\"'     `.              ,'         |   |  ',,\n    `.      '            '            /          '    |'. |/\n      `.   |              \\       _,-'           |       ''\n        `._'               \\   '\"\\                .      |\n           |                '     \\                `._  ,'\n           |                 '     \\                 .'|\n           |                 .      \\                | |\n           |                 |       L              ,' |\n           `                 |       |             /   '\n            \\                |       |           ,'   /\n          ,' \\               |  _.._ ,-..___,..-'    ,'\n         /     .             .      `!             ,j'\n        /       `.          /        .           .'/\n       .          `.       /         |        _.'.'\n        `.          7`'---'          |------\"'_.'\n       _,.`,_     _'                ,''-----\"'\n   _,-_    '       `.     .'      ,\\\n   -\" /`.         _,'     | _  _  _.|\n    \"\"--'---\"\"\"\"\"'        `' '! |! /\n                            `\" \" -'");
+                break;
+            case 2: 
+                starter = new Bulbasaur(); 
+                System.out.println("                        _,.------....___,.' ',.-.\n                     ,-'          _,.--\"        |\n                   ,'         _.-'              .\n                  /   ,     ,'                   `\n                 .   /     /                     ``.\n                 |  |     .                       \\.\\\n       ____      |___._.  |       __               \\ `.\n     .'    `---\"\"       ``\"-.--\"'`  \\               .  \\\n    .  ,            __               `              |   .\n    `,'         ,-\"'  .               \\             |    L\n   ,'          '    _.'                -._          /    |\n  ,`-.    ,\".   `--'                      >.      ,'     |\n . .'\\'   `-'       __    ,  ,-.         /  `.__.-      ,'\n ||:, .           ,'  ;  /  / \\ `        `.    .      .'/\n j|:D  \\          `--'  ' ,'_  . .         `.__, \\   , /\n/ L:_  |                 .  \"' :_;                `.'.'\n.    \"\"'                  \"\"\"\"\"'                    V\n `.                                 .    `.   _,..  `\n   `,_   .    .                _,-'/    .. `,'   __  `\n    ) \\`._        ___....----\"'  ,'   .'  \\ |   '  \\  .\n   /   `. \"`-.--\"'         _,' ,'     `---' |    `./  |\n  .   _  `\"\"'--.._____..--\"   ,             '         |\n  | .\" `. `-.                /-.           /          ,\n  | `._.'    `,_            ;  /         ,'          .\n.'          /| `-.        . ,'         ,           ,\n'-.__ __ _,','    '`-..___;-...__   ,.'\\ ____.___.'\n`\"^--'..'   '-`-^-'\"--    `-^-'`.''\"\"\"\"\"`.,^.`.--'");
+                break;
+            case 3: 
+                starter = new Squirtle(); 
+                System.out.println("               _,........__\n            ,-'            \"`-.\n          ,'                   `-.\n        ,'                        \\\n      ,'                           .\n      .'\\               ,\"\".       `\n     ._.'|             / |  `       \\\n     |   |            `-.'  ||       `.\n     |   |            '-._,'||       | \\\n    .`.,'             `..,'.'       , |`-.\n     l                       .'`.  _/  |   `.\n     `-.._'-   ,          _ _'   -\" \\  .     `\n`.\"\"\"\"\"'-.`-...,---------','         `. `....__.\n.'        `\"-..___      __,'\\          \\  \\     \\\n\\_ .          |   `\"\"\"\"'    `.           . \\     \\\n  `.          |              `.          |  .     L\n    `.        |`--...________.'.        j   |     |\n      `._    .'      |          `.     .|   ,     |\n         `--,\\       .            `7\"\"' |  ,      |\n            ` `      `            /     |  |      |    _,-'\"\"\"`-.\n             \\ `.     .          /      |  '      |  ,'          `.\n              \\  v.__  .        '       .   \\    /| /              \\\n               \\/    `\"\"\\\"\"\"\"\"\"\"`.       \\   \\  /.''                |\n                `        .        `._ ___,j.  `/ .-       ,---.     |\n                ,`-.      \\         .\"     `.  |/        j     `    |\n               /    `.     \\       /         \\ /         |     /    j\n              |       `-.   7-.._ .          |\"          '         /\n              |          `./_    `|          |            .     _,'\n              `.           / `----|          |-............`---'\n                \\          \\      |          |\n               ,'           )     `.         |\n                7____,,..--'      /          |\n                                  `---.__,--.'");
+                break;
         }
-        Map m = new Map(); //create map
+
+        Map m = new Map(); //create Map
         int currMapNum = 1;
         m.loadMap(1); //load first map
         Trainer player = new Trainer(yourName, starter, m); //create trainer
+        int playerCurrHealth = player.getHp();
         
-
+        Super:
         while(true){ 
             System.out.println(player.toString());
             int menuChoice = mainMenu();
             char loc = '0';
-            Point curr_loc = player.getLocation();
             switch (menuChoice){
                 case 1:
                     loc = player.goNorth();
@@ -49,9 +60,11 @@ public class Main{
                     loc = player.goWest();
                     break;
                 case 5:
-                    System.out.println("Game Over");
+                    System.out.println("Game Over.");
                     System.exit(0);
+                
             }
+            m.reveal(player.getLocation());
             if (loc == 'n') { 
                 System.out.println("There's nothing here...");
             }
@@ -83,11 +96,18 @@ public class Main{
                         switch (opt_num) {
                             case 1: //fight
                                 trainerAttack(player, wild);
-                                    
+                                if (wild.getHp() == 0){
+                                    break encounterLoop;
+                                }
+                                if (playerCurrHealth > player.getHp()){
+                                    m.removeCharAtLoc(player.getLocation());
+                                    break encounterLoop;
+                                }
                                 break;
                             case 2: //use potion	
                                 if (player.hasPotion() == true) {
                                     System.out.println("Which pokemon would you like to heal?");
+                                    System.out.println(player.getPokemonList());
                                     int pokIndex = CheckInput.getIntRange(1, player.getNumPokemon());
                                     player.usePotion(pokIndex-1);
                                     System.out.println("Pokemon " + player.getPokemon(pokIndex-1) + " has healed from damage!");
@@ -101,6 +121,10 @@ public class Main{
                                     if (player.catchPokemon(wild) == true) {
                                         System.out.println("You caught " + wild.getName() + "!");			
                                         break encounterLoop;
+                                    }
+                                    else {
+                                        System.out.println("The Pokeball failed. The Pokemon ran away!");
+                                        break encounterLoop;
                                     }	
                                 }
                                 else {
@@ -108,13 +132,10 @@ public class Main{
                                 }
                                 break;
                             case 4: //run away
-                                char unchanged = m.getCharAtLoc(player.getLocation());
-                                unchanged = 'w';
                                 int random_loc = rand.nextInt(4);
                                 Loop: //loops while the move is invalid
                                 while (true) {
                                     switch (random_loc) {
-                                        
                                         case 0:
                                             if (player.goNorth() != (char) 0) {
                                                 break Loop;
@@ -138,16 +159,11 @@ public class Main{
                                     }
                                     random_loc = rand.nextInt(4);
                                 }
-                                break encounterLoop;
+                                continue Super;
                         }
                         System.out.println(WPOK_MENU);
                         opt_num = CheckInput.getIntRange(1,4);
                     }
-                //if wild pokemon is at 0 hp, then player must decide to catch that pokemon or not
-                if (wild.getHp() == 0) {
-                    System.out.println("The Pokemon fainted, please move on.");
-
-                }
             }
             else if (loc == 'p') {
                 int person = rand.nextInt(4); //0-3
@@ -186,6 +202,7 @@ public class Main{
                 store(player);
             }
             else if (loc == 'f') {
+                System.out.println("You found a finish!");
 				if (currMapNum<3) {
                     currMapNum += 1;
 					m.loadMap(currMapNum);
@@ -198,7 +215,7 @@ public class Main{
 				}
 			}
             if (loc == 'i' || loc == 'p' || loc == 'w') {
-				m.removeCharAtLoc(curr_loc);
+				m.removeCharAtLoc(player.getLocation());
 			}
         }
 
@@ -235,10 +252,14 @@ public class Main{
         System.out.println(t.getPokemonList());
         Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1); //Get chosen Pokemon
         if (userPokemon.getHp() == 0){ //Check if the chosen Pokemon is fainted. If it is, deal damage to the trainer
-            System.out.println(userPokemon.getName() + " is fainted. Please choose another option.");
+            System.out.println(userPokemon.getName() + " is fainted.");
             int damage = (int)(Math.random() * ((10-5)+1)) + 5;
             t.takeDamage(damage);
             System.out.println(wild.getName() + " attacked " + t.getName() + " for " + damage + " damage!");
+            if (t.getHp() == 0){
+                System.out.println("You died!\nGame Over.");
+                System.exit(0);
+            }
             return;
         }
 
@@ -258,6 +279,10 @@ public class Main{
                 int specialAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumSpecialMenuItems());
                 System.out.println(userPokemon.specialAttack(wild, specialAttackChoice));
                 break;
+        }
+        if (wild.getHp() == 0){
+            System.out.println(wild.getName() + " fainted.");
+            return;
         }
         
         //The wild Pokemon attack back
@@ -298,6 +323,7 @@ public class Main{
                     moneySpent = t.spendMoney(5); //try to spend some money
                     if(moneySpent){
                         System.out.println("Here\'s your potion."); //successful acquisition of products
+                        t.receivePotion();
                     } else {
                         System.out.println("Sorry, you\'re too broke for that."); //you need a stimmy bro
                     }
@@ -305,6 +331,7 @@ public class Main{
                     moneySpent = t.spendMoney(3); //try to spend some money
                     if(moneySpent){
                         System.out.println("Here\'s your poke ball."); //successful acquisition of products
+                        t.receivePokeball();
                     } else {
                         System.out.println("Sorry, you\'re too broke for that."); //you need a stimmy bro
                     }

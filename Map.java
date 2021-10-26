@@ -84,18 +84,6 @@ public class Map {
             }
             mapString += '\n';
         }
-        for(int i = 0; i < 5; i++){                 //do not forget to remove this
-            for(int j = 0; j < 5; j++){             //do not forget to remove this
-                mapString += this.revealed[i][j];   //do not forget to remove this
-            }
-            mapString += '\n';                      //do not forget to remove this
-        }
-        for(int i = 0; i < 5; i++){                 //do not forget to remove this
-            for(int j = 0; j < 5; j++){             //do not forget to remove this
-                mapString += this.map[i][j];        //do not forget to remove this
-            }
-            mapString += '\n';                      //do not forget to remove this
-        }
         return mapString;
     }
 
