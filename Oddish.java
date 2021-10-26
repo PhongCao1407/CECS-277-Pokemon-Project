@@ -70,7 +70,7 @@ public class Oddish extends Pokemon implements Grass {
         + MIN_DAMAGE) * battleTable[2][p.getType()]);
 
         p.takeDamage(damage);
-        return p.getName() + "is SLASHED with RAZOR LEAF and takes " + damage + " damages";
+        return p.getName() + " is SLASHED with RAZOR LEAF and takes " + damage + " damage";
     }
 
     /**

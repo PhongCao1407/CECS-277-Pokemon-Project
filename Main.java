@@ -99,6 +99,7 @@ public class Main{
                                     break encounterLoop;
                                 }
                                 if (playerCurrHealth > player.getHp()){
+                                    playerCurrHealth = player.getHp();
                                     m.removeCharAtLoc(player.getLocation());
                                     break encounterLoop;
                                 }
@@ -178,7 +179,7 @@ public class Main{
                                 + "\n1. Yes \n2. No"); 
                         int opt_num = CheckInput.getIntRange(1,4);
                         switch (opt_num) {
-                            case 1: System.out.println("Brock:Thanks for helping, here's $5"); 
+                            case 1: System.out.println("Brock: Thanks for helping, here's $5"); 
                                 player.receiveMoney(5);
                                 break;
                             case 2: System.out.println("Brock: Ok, maybe next time?");
@@ -194,6 +195,10 @@ public class Main{
                         System.out.println("You bumped into Misty."
                                 + "\nMisty: Where's my bike, twerp! \nMisty SMACKS you for 3 damage");
                         player.takeDamage(3);
+                        playerCurrHealth = player.getHp();
+                        if (player.getHp() == 0){
+                            System.out.println("You died!\nGame Over.");
+                        }
                         break;
                 }
             }
