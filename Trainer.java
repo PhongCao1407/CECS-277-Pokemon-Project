@@ -117,7 +117,7 @@ public class Trainer extends Entity {
 	 * @return true/false	
 	 */
 	public boolean catchPokemon(Pokemon p) {
-		double percent = (p.getHp() / p.getMaxHp()) * 100;
+		double percent = ((p.getMaxHp() - p.getHp()) / p.getMaxHp()) * 100;
 		if ((rand.nextInt(100) + 1) > percent && hasPokeball()){
 			pokemon.add(p);
 			pokeballs -= 1;
