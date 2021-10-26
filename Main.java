@@ -6,8 +6,7 @@ import java.awt.Point;
 
 public class Main{
     static final Scanner in = new Scanner(System.in);
-	static final Random rand = new Random();
-	static Pokemon selecPok;
+    static final Random rand = new Random();
     
     public static void main(String[] args){
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
