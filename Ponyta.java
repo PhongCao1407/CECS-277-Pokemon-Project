@@ -27,7 +27,7 @@ public class Ponyta extends Pokemon implements Fire {
             default:
                 return "That is not a valid move.";
         }
-        return p.getName() + " is hurt.";
+        return p.toString();
     }
 
 	@Override
@@ -37,7 +37,7 @@ public class Ponyta extends Pokemon implements Fire {
 		int damage = (int) ((Math.random() * (max - min)+1) + min);
         damage *= battleTable[0][p.getType()];
 		p.takeDamage(damage);
-		return "Ponyta made an ember attack to " + p.getName() + " with damage " + damage + ".";
+		return "Ponyta made an EMBER ATTACK to " + p.getName() + " with damage " + damage + ".";
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class Ponyta extends Pokemon implements Fire {
 		int damage = (int) ((Math.random() * (max - min)+1) + min);
         damage *= battleTable[0][p.getType()];
 		p.takeDamage(damage);
-		return "Ponyta blasted fire to " + p.getName() + " with damage " + damage + ".";
+		return "Ponyta BLASTED FIRE to " + p.getName() + " with damage " + damage + ".";
 	}
 	
 	@Override
@@ -57,6 +57,6 @@ public class Ponyta extends Pokemon implements Fire {
 		int damage = (int) ((Math.random() * (max - min)+1) + min);
         damage *= battleTable[0][p.getType()];
 		p.takeDamage(damage);
-		return "With a flaming hoof, Ponyta kicked " + p.getName() + " with damage " + damage + ".";
+		return "With a FLAMING hoof, Ponyta KICKED " + p.getName() + " with damage " + damage + ".";
 	}
 }
