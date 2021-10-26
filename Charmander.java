@@ -1,7 +1,9 @@
 import java.lang.Math; 
 
 public class Charmander extends Pokemon implements Fire {
-	
+   /**
+    * class constructor 
+    */		
 	public Charmander() {
 		super("Charmander");
 		this.pokemonType = "Fire";
