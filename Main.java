@@ -9,6 +9,7 @@ public class Main{
     static final Random rand = new Random();
     
     public static void main(String[] args){
+        System.out.println("New line");
         System.out.println("                                      ,'\\\n        _.----.        ____         ,'  _\\   ___    ___     ____\n    _,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.\n    \\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n     \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n       \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n        \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n         \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n          \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n           \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n            \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n                                    `'                            '-._|");
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
         String yourName = CheckInput.getString(); //get name
