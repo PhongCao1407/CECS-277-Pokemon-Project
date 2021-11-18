@@ -6,7 +6,6 @@ public class Charmander extends Pokemon implements Fire {
     */		
 	public Charmander() {
 		super("Charmander");
-		this.pokemonType = "Fire";
 	}
    /**
     * fire type special menu 
