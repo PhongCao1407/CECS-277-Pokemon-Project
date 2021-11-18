@@ -12,7 +12,6 @@ public class Trainer extends Entity {
 	public ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
 	
 	private static final int mHp = 25;
-	private int mapNum = 1;
 	Random rand = new Random();
 
 	/**
