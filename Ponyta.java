@@ -4,7 +4,6 @@ public class Ponyta extends Pokemon implements Fire {
     */		
 	public Ponyta() {
 		super("Ponyta");
-		this.pokemonType = "Fire";
 	}
 	
    /**
