@@ -9,7 +9,6 @@ public class Staryu extends Pokemon implements Water {
     */
     public Staryu(){
         super("Staryu");
-        this.pokemonType = "Water";
     }
 
     /**
