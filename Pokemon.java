@@ -17,7 +17,6 @@ public abstract class Pokemon extends Entity{
     /**
      * the type of the Pokemon, to be implemented later in the subclasses
      */
-    public String pokemonType;
 
     public Pokemon(String n){
         super(n, RANDOM_HEALTH);
@@ -156,13 +155,12 @@ public abstract class Pokemon extends Entity{
      */
     public int getType(){
         //Check type of pokemon using implicit paramenter
-        switch (this.pokemonType.toLowerCase()){
-            case "fire":
-                return 0;
-            case "water":
-                return 1;
-            case "grass":
-                return 2;
+        if (this instanceof Fire){
+            return 0;
+        } else if (this instanceof Water){
+            return 1;
+        } else if (this instanceof Grass){
+            return 2;
         }
         return -1;
     }
