@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.awt.Point; 
 
 public class Main{
     static final Scanner in = new Scanner(System.in);
