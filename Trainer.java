@@ -8,7 +8,7 @@ public class Trainer extends Entity {
 	private int potions = 1;
 	private int pokeballs = 5;
 	private Point loc = new Point(); 
-	private Map map = new Map();
+	private Map map = Map.getInstance();
 	public ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
 	
 	private static final int mHp = 25;
@@ -20,7 +20,6 @@ public class Trainer extends Entity {
 	 * @param p		initial pokemon selected 
 	 * @param m		Copy of map 
 	 */
-	
 	public Trainer(String n, Pokemon p, Map m) {
 		super(n, mHp);
 		map = m; 

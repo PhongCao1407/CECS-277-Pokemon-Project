@@ -35,7 +35,7 @@ public class Main{
                 break;
         }
 
-        Map m = new Map(); //create Map
+        Map m = Map.getInstance(); //get instance of Map
         int currMapNum = 1;
         m.loadMap(1); //load first map
         Trainer player = new Trainer(yourName, starter, m); //create trainer

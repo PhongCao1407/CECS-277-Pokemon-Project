@@ -7,18 +7,30 @@ public class Map {
     
     private char [][] map = new char[5][5];
     private boolean [][] revealed = new boolean[5][5];
+    private static Map instance = null;
 
     /**
     * Map constructor
     * initializes revealed array to false
     */
-    public Map(){
-
+    private Map(){
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
                 this.revealed[j][i] = false; //initialize revealed to false
             }
         }
+    }
+
+    /**
+     * singleton Map getInstance
+     * checks for an instance of Map and creates one if one does not exist
+     * @return instance of Map
+     */
+    public static Map getInstance(){
+        if( instance == null ) {
+            instance = new Map();
+         }
+         return instance;
     }
 
     /**
