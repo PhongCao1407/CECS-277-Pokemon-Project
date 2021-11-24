@@ -9,7 +9,7 @@ public class Trainer extends Entity {
 	private int pokeballs = 5;
 	private Point loc = new Point(); 
 	private Map map = Map.getInstance();
-	public ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
+	private ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
 	
 	private static final int mHp = 25;
 	Random rand = new Random();
