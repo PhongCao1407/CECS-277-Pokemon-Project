@@ -11,34 +11,16 @@ public abstract class Pokemon extends Entity {
 
     private static final int MIN_HEALTH = 22;
     private static final int MAX_HEALTH = 25;
-    private static final int RANDOM_HEALTH = 
-        (int)(Math.random() * ((MAX_HEALTH-MIN_HEALTH)+1)) + MIN_HEALTH;
+    // private static final int RANDOM_HEALTH = 
+    //     (int)(Math.random() * ((MAX_HEALTH-MIN_HEALTH)+1)) + MIN_HEALTH;
     
     /**
      * the type of the Pokemon, to be implemented later in the subclasses
      */
 
-    public Pokemon(String n){
-        super(n, RANDOM_HEALTH);
+    public Pokemon(String n, int h, int m){
+        super(n, h, m);
     }
-    
-    /**
-     * @return the special menu as a String
-     */
-    public abstract String getSpecialMenu();
-
-    /**
-     * @return the number of choices in the special menu
-     */
-    public abstract int getNumSpecialMenuItems();
-
-    /**
-     * Carry out a special attack on the given Pokemon
-     * @param p the Pokemon to be attacked
-     * @param move the special attacking move 
-     * @return a String message confirming the attack
-     */
-    public abstract String specialAttack(Pokemon p, int move);
 
     /**
      * @return the basic menu as a String
@@ -92,7 +74,7 @@ public abstract class Pokemon extends Entity {
     }
 
     public double getAttackMultipier(Pokemon p, int atkType){
-        return battleTable[this.getType()][p.getType()];
+        return 1;
     }
 
     public int getAttackBonus(int atkType){
