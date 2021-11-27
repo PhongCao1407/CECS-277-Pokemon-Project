@@ -78,7 +78,7 @@ public abstract class Pokemon extends Entity {
     }
 
     public int getAttackBonus(int atkType){
-        return 1; //TODO: Fix this later
+        return 0;
     }
 
 
