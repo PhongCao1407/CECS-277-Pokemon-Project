@@ -1,7 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.spi.CurrencyNameProvider;
 
 public class Trainer extends Entity {
 	
