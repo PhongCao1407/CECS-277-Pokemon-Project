@@ -1,6 +1,7 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.spi.CurrencyNameProvider;
 
 public class Trainer extends Entity {
 	
@@ -8,7 +9,6 @@ public class Trainer extends Entity {
 	private int potions = 1;
 	private int pokeballs = 5;
 	private Point loc = new Point(); 
-	private Map map = Map.getInstance();
 	private ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
 	
 	private static final int mHp = 25;
@@ -20,10 +20,9 @@ public class Trainer extends Entity {
 	 * @param p		initial pokemon selected 
 	 * @param m		Copy of map 
 	 */
-	public Trainer(String n, Pokemon p, Map m) {
+	public Trainer(String n, Pokemon p) {
 		super(n, mHp);
-		map = m; 
-		loc = map.findStart();
+		loc = Map.getInstance().findStart();
 		pokemon.add(p); 
 	}
 	
@@ -121,6 +120,11 @@ public class Trainer extends Entity {
 		if ((randNum < percent) && hasPokeball()){
 			pokemon.add(p);
 			pokeballs -= 1;
+			if (this.getNumPokemon() > 6){ //This maybe implement in main, im not sure where it is suppose to be implemented
+				System.out.println("Please choose a pokemon to discard.\n" + this.getPokemonList());
+				int input = CheckInput.getIntRange(0,6);
+				pokemon.remove(input);
+			}
 			return true;
 		}
 		
@@ -147,7 +151,7 @@ public class Trainer extends Entity {
 		if (y > 0) {
 			this.loc.translate(0, -1); //to go up, decrement value
 			
-			return map.getCharAtLoc(getLocation());
+			return Map.getInstance().getCharAtLoc(getLocation());
 			}
 		
 		else {
@@ -166,7 +170,7 @@ public class Trainer extends Entity {
 		if (y < 4) {
 			this.loc.translate(0, +1);
 			
-			return map.getCharAtLoc(getLocation());
+			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
 			System.out.println("You cannot go that way.");
@@ -184,7 +188,7 @@ public class Trainer extends Entity {
 		if (x < 4) {
 			this.loc.translate(+1, 0);
 
-			return map.getCharAtLoc(getLocation());
+			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
 			System.out.println("You cannot go that way.");
@@ -202,7 +206,7 @@ public class Trainer extends Entity {
 		if (x > 0) {
 			this.loc.translate(-1, 0);
 
-			return map.getCharAtLoc(getLocation());
+			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
 			System.out.println("You cannot go that way.");
@@ -225,6 +229,17 @@ public class Trainer extends Entity {
 		for (Pokemon p : pokemon) {
 			p.heal();
 		}
+	}
+
+	public void buffAllPokemon() {
+		for (Pokemon p : pokemon) {
+			p = PokemonGenerator.addRandomBuff(p);
+		}
+	}
+
+	public void debuffPokemon(int index) {
+		Pokemon currPokemon = this.getPokemon(index);
+		currPokemon = PokemonGenerator.addRandomBuff(currPokemon);	
 	}
 	
 	/**
@@ -249,6 +264,10 @@ public class Trainer extends Entity {
 		}
 		return PokemonList;
 	}
+
+	public Pokemon removePokemon(int index) {
+		return pokemon.remove(index); 
+	}
 	
 	/**
 	 * @return trainer's summary (name, hp, inventory, pokemon list, map) 
@@ -259,7 +278,7 @@ public class Trainer extends Entity {
 		String potn = "\nPotions: " + potions;
 		String pokB = "\nPokeballs: " + pokeballs;
 		String pokL = "\n" + getPokemonList();
-		String Map = "\n" + map.mapToString(loc) + "\n";
-		return super.toString() + mon + potn + pokB + pokL + Map;
+		String map = "\n" + Map.getInstance().mapToString(loc) + "\n";
+		return super.toString() + mon + potn + pokB + pokL + map;
 	}
 }
