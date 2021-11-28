@@ -232,14 +232,16 @@ public class Trainer extends Entity {
 	}
 
 	public void buffAllPokemon() {
+		PokemonGenerator pokemonGenerator = new PokemonGenerator();
 		for (Pokemon p : pokemon) {
-			p = PokemonGenerator.addRandomBuff(p);
+			p = pokemonGenerator.addRandomBuff(p);
 		}
 	}
 
 	public void debuffPokemon(int index) {
+		PokemonGenerator pokemonGenerator = new PokemonGenerator();
 		Pokemon currPokemon = this.getPokemon(index);
-		currPokemon = PokemonGenerator.addRandomBuff(currPokemon);	
+		currPokemon = pokemonGenerator.addRandomDeBuff(currPokemon);	
 	}
 	
 	/**
