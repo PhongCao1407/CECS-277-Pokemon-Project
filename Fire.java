@@ -1,5 +1,5 @@
 public class Fire extends Pokemon{
-    private String fire = 
+    private String fireAttackMenu = 
         "1. Ember\n" 
       + "2. Fire Blast\n"
       + "3. Fire Punch";
