@@ -67,7 +67,7 @@ public class Fire extends Pokemon{
     }
 
     public double getAttackMultipier(Pokemon p, int atkType){
-      return battleTable[2][p.getType()];
+      return battleTable[0][p.getType()];
     }
 
 }
