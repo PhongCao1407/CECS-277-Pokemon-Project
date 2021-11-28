@@ -10,7 +10,6 @@ public class Trainer extends Entity {
 	private Point loc = new Point(); 
 	private ArrayList<Pokemon>pokemon = new ArrayList<Pokemon>();
 	
-	private static final int mHp = 25;
 	Random rand = new Random();
 
 	/**
@@ -20,7 +19,7 @@ public class Trainer extends Entity {
 	 * @param m		Copy of map 
 	 */
 	public Trainer(String n, Pokemon p) {
-		super(n, mHp);
+		super(n, 25, 25);
 		loc = Map.getInstance().findStart();
 		pokemon.add(p); 
 	}

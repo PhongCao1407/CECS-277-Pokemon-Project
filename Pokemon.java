@@ -8,11 +8,6 @@ public abstract class Pokemon extends Entity {
         {{1,.5,2},
          {2,1,.5},
          {.5,2,1}};
-
-    private static final int MIN_HEALTH = 22;
-    private static final int MAX_HEALTH = 25;
-    // private static final int RANDOM_HEALTH = 
-    //     (int)(Math.random() * ((MAX_HEALTH-MIN_HEALTH)+1)) + MIN_HEALTH;
     
     /**
      * the type of the Pokemon, to be implemented later in the subclasses
