@@ -47,18 +47,18 @@ public class Fire extends Pokemon{
       } else{
         switch (move){
             case 1:
-                final int MIN_EMBER_DAMAGE = 1;
-                final int MAX_EMBER_DAMAGE = 3;
+                final int MIN_EMBER_DAMAGE = 0;
+                final int MAX_EMBER_DAMAGE = 4;
                 return (int)(Math.random() * ((MAX_EMBER_DAMAGE-MIN_EMBER_DAMAGE)+1)) 
                         + MIN_EMBER_DAMAGE;
             case 2:
-                final int MIN_FIREBLAST_DAMAGE = 2;
-                final int MAX_FIREBLAST_DAMAGE = 4;
+                final int MIN_FIREBLAST_DAMAGE = 1;
+                final int MAX_FIREBLAST_DAMAGE = 5;
                 return (int)(Math.random() * ((MAX_FIREBLAST_DAMAGE-MIN_FIREBLAST_DAMAGE)+1)) 
                         + MIN_FIREBLAST_DAMAGE;
             case 3:
-                final int MIN_FIREPUNCH_DAMAGE = 0;
-                final int MAX_FIREPUNCH_DAMAGE = 5;
+                final int MIN_FIREPUNCH_DAMAGE = 1;
+                final int MAX_FIREPUNCH_DAMAGE = 4;
                 return (int)(Math.random() * ((MAX_FIREPUNCH_DAMAGE-MIN_FIREPUNCH_DAMAGE)+1)) 
                         + MIN_FIREPUNCH_DAMAGE;
         }
