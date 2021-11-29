@@ -83,7 +83,7 @@ public class Trainer extends Entity {
 		
 		if (hasPotion()) {
 			getPokemon(pokeIndex).heal();
-			PokemonGenerator pokemonGenerator = new PokemonGenerator();
+			PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
 			pokemonGenerator.addRandomBuff(getPokemon(pokeIndex));
 			potions -= 1;
 		}
@@ -232,14 +232,14 @@ public class Trainer extends Entity {
 	}
 
 	public void buffAllPokemon() {
-		PokemonGenerator pokemonGenerator = new PokemonGenerator();
+		PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
 		for (Pokemon p : pokemon) {
 			pokemonGenerator.addRandomBuff(p);
 		}
 	}
 
 	public void debuffPokemon(int index) {
-		PokemonGenerator pokemonGenerator = new PokemonGenerator();
+		PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
 		pokemonGenerator.addRandomDeBuff(getPokemon(index));	
 	}
 	

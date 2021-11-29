@@ -11,7 +11,7 @@ public class Water extends Pokemon{
   
     public String getAttackMenu(int atkType){
         if (atkType == 1){
-          return super.getAttackMenu();
+          return super.getAttackMenu(1);
         } else if (atkType == 2){
           return specialMenu;
         }

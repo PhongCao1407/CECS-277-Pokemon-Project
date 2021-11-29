@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Main{
     static final Scanner in = new Scanner(System.in);
     static final Random rand = new Random();
+    static final PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
     
     public static void main(String[] args){
         System.out.println("New line");
@@ -17,7 +18,7 @@ public class Main{
         System.out.println("Choose your first pokemon:\n1. Charmander\n2. Bulbasaur\n3. Squirtle");
         int firstPokemon = CheckInput.getIntRange(1,3); //get first pokemon choice
 
-        PokemonGenerator pokemonGenerator = new PokemonGenerator();
+        
         Pokemon starter = pokemonGenerator.getPokemon("Charmander");//predeclare starter pokemon
 
         switch(firstPokemon){ //actually declare starter pokemon
@@ -250,7 +251,7 @@ public class Main{
      * @param t the trainer attacking
      * @param wild the wild Pokemon to be attacked
      */
-    public static void trainerAttack(Trainer t, Pokemon wild){
+    public static Pokemon trainerAttack(Trainer t, Pokemon wild){
         //Let the player choose a Pokemon from the trainer
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
@@ -264,43 +265,45 @@ public class Main{
                 System.out.println("You died!\nGame Over.");
                 System.exit(0);
             }
-            return;
+            return userPokemon;
         }
 
         System.out.println(userPokemon.getName() + ", I choose you!");
-        System.out.println(userPokemon.getAttackMenu());
+        System.out.println(userPokemon.getAttackTypeMenu());
 
         //Attack the wild Pokemon
-        int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems());
+        int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems(1));
         switch(attackMenu){
             case 1:
-                System.out.println(userPokemon.getAttackMenu());
-                int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumAttackMenuItems());
+                System.out.println(userPokemon.getAttackMenu(1));
+                int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumAttackMenuItems(1));
                 System.out.println(userPokemon.attack(wild, 1, basicAttackChoice));
                 break;
             case 2:
-                System.out.println(userPokemon.getSpecialMenu());
-                int specialAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumSpecialMenuItems());
-                System.out.println(userPokemon.specialAttack(wild, specialAttackChoice));
+
+                System.out.println(userPokemon.getAttackMenu(2));
+                int specialAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumAttackMenuItems(2));
+                System.out.println(userPokemon.attack(wild, 2, specialAttackChoice));
                 break;
         }
         if (wild.getHp() == 0){
             System.out.println(wild.getName() + " fainted.");
-            return;
+            return userPokemon;
         }
         
         //The wild Pokemon attack back
         int randAttackType = rand.nextInt(2); 
         switch (randAttackType){
             case 0:
-                int randBasicAttack = rand.nextInt(wild.getNumBasicMenuItems()) + 1;
-                wild.basicAttack(userPokemon, randBasicAttack);
+                int randBasicAttack = rand.nextInt(wild.getNumAttackMenuItems(1)) + 1;
+                wild.attack(userPokemon, 1, randBasicAttack);
                 break;
             case 1:
-                int randSpecialAttack = rand.nextInt(wild.getNumSpecialMenuItems()) + 1;
-                wild.specialAttack(userPokemon, randSpecialAttack);
+                int randSpecialAttack = rand.nextInt(wild.getNumAttackMenuItems(2)) + 1;
+                wild.attack(userPokemon, 2, randSpecialAttack);
                 break;
         }
+        return userPokemon;
 
 
     }

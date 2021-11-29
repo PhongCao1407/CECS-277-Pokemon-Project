@@ -15,12 +15,12 @@ public abstract class PokemonDecorator extends Pokemon{
 
     
     public String getAttackMenu(int atkType){
-        return pokemon.getAttackMenu();
+        return pokemon.getAttackMenu(atkType);
     }
 
     
     public int getNumAttackMenuItems(int atkType){
-        return pokemon.getNumAttackMenuItems();
+        return pokemon.getNumAttackMenuItems(atkType);
     }
 
     

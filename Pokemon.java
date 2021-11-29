@@ -20,7 +20,7 @@ public abstract class Pokemon extends Entity {
     /**
      * @return the basic menu as a String
      */
-    public String getAttackMenu(){
+    public String getAttackMenu(int atkType){
         return "1. Slam\n"
         + "2. Tackle\n"
         + "3. Punch";
@@ -29,11 +29,12 @@ public abstract class Pokemon extends Entity {
     /**
      * @return the number of choices in the basic menu (3)
      */
-    public int getNumAttackMenuItems(){
+    public int getNumAttackMenuItems(int atkType){
         return 3;
     }
 
     public String getAttackString(int atkType, int move){
+
         switch (move){
             case 1:
                 return "SLAMMED";
