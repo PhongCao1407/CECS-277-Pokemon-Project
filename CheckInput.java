@@ -29,7 +29,6 @@ public class CheckInput {
 				System.out.println( "Invalid Input." );
 			}
 		}
-		in.close();
 		return input;
 	}
 	
@@ -57,7 +56,6 @@ public class CheckInput {
 				System.out.println( "Invalid Input." );
 			}
 		}
-		in.close();
 		return input;
 	}
 	/**
@@ -81,7 +79,6 @@ public class CheckInput {
 				System.out.println( "Invalid Input." );
 			}
 		}
-		in.close();
 		return input;
 	}
 
@@ -102,7 +99,6 @@ public class CheckInput {
 				System.out.println( "Invalid Input." );
 			}
 		}
-		in.close();
 		return input;
 	}
 	
@@ -113,7 +109,6 @@ public class CheckInput {
 	public static String getString() {
 		Scanner in = new Scanner( System.in );
 		String input = in.nextLine();
-		in.close();
 		return input;
 	}
 

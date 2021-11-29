@@ -43,7 +43,7 @@ public class Fire extends Pokemon{
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
-        return getAttackDamage(atkType, move);
+        return super.getAttackDamage(atkType, move);
       } else{
         switch (move){
             case 1:

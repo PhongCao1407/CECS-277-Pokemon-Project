@@ -9,7 +9,6 @@ public class Main{
     static final PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
     
     public static void main(String[] args){
-        System.out.println("New line");
         System.out.println("                                      ,'\\\n        _.----.        ____         ,'  _\\   ___    ___     ____\n    _,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.\n    \\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n     \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n       \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n        \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n         \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n          \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n           \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n            \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n                                    `'                            '-._|");
         System.out.println("Prof. Oak: Hello there new trainer, what is your name?");
         String yourName = CheckInput.getString(); //get name
@@ -17,7 +16,6 @@ public class Main{
         System.out.println("Great to meet you, " + yourName);
         System.out.println("Choose your first pokemon:\n1. Charmander\n2. Bulbasaur\n3. Squirtle");
         int firstPokemon = CheckInput.getIntRange(1,3); //get first pokemon choice
-
         
         Pokemon starter = pokemonGenerator.getPokemon("Charmander");//predeclare starter pokemon
 
@@ -92,8 +90,9 @@ public class Main{
                 Pokemon wild = pokemonGenerator.generatorRandomPokemon(1);
                 System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
                 int opt_num = CheckInput.getIntRange(1,4);
+                System.out.println(wild.toString());
                 encounterLoop:
-                    while (wild.getHp() != 0) {
+                    while (wild.getHp() != 0) {                       
                         switch (opt_num) {
                             case 1: //fight
                                 trainerAttack(player, wild);
@@ -163,6 +162,7 @@ public class Main{
                                 }
                                 continue Super;
                         }
+                        System.out.println(wild.toString());
                         System.out.println(WPOK_MENU);
                         opt_num = CheckInput.getIntRange(1,4);
                     }
@@ -256,6 +256,14 @@ public class Main{
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
         Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1); //Get chosen Pokemon
+
+        if (rand.nextInt(4) == 0){
+            wild = pokemonGenerator.addRandomDeBuff(wild);
+        }
+        if (rand.nextInt(10) == 0){
+            userPokemon = pokemonGenerator.addRandomDeBuff(userPokemon);
+        }
+
         if (userPokemon.getHp() == 0){ //Check if the chosen Pokemon is fainted. If it is, deal damage to the trainer
             System.out.println(userPokemon.getName() + " is fainted.");
             int damage = (int)(Math.random() * ((10-5)+1)) + 5;
@@ -296,11 +304,11 @@ public class Main{
         switch (randAttackType){
             case 0:
                 int randBasicAttack = rand.nextInt(wild.getNumAttackMenuItems(1)) + 1;
-                wild.attack(userPokemon, 1, randBasicAttack);
+                System.out.println(wild.attack(userPokemon, 1, randBasicAttack));
                 break;
             case 1:
                 int randSpecialAttack = rand.nextInt(wild.getNumAttackMenuItems(2)) + 1;
-                wild.attack(userPokemon, 2, randSpecialAttack);
+                System.out.println(wild.attack(userPokemon, 2, randSpecialAttack));
                 break;
         }
         return userPokemon;

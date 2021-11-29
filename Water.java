@@ -44,7 +44,7 @@ public class Water extends Pokemon{
     public int getAttackDamage(int atkType, int move){
         Random rand = new Random();
         if (atkType == 1){
-          return getAttackDamage(atkType, move);
+          return super.getAttackDamage(atkType, move);
         } else{
           switch (move){
               case 1:

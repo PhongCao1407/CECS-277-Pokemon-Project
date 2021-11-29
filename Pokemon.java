@@ -95,8 +95,8 @@ public abstract class Pokemon extends Entity {
             + getAttackBonus(atkType));
 
         p.takeDamage(damage);
-        return p.getName() + "is " + getAttackString(atkType, move) + " by " 
-            + this.getName() + " and takes " + damage + "damage";
+        return p.getName() + " is " + getAttackString(atkType, move) + " by " 
+            + this.getName() + " and takes " + damage + " damage";
 
     }
 

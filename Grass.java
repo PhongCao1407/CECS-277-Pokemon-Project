@@ -43,7 +43,8 @@ public class Grass extends Pokemon{
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
-        return getAttackDamage(atkType, move);
+        System.out.println(move);
+        return super.getAttackDamage(atkType, move);
       } else{
         switch (move){
             case 1:
