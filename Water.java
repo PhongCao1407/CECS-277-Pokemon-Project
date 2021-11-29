@@ -7,25 +7,25 @@ public class Water extends Pokemon{
     
     public Water(String n, int h, int m){
         super(n, h, m);
-      } 
+    } 
   
-      public String getAttackMenu(int atkType){
+    public String getAttackMenu(int atkType){
         if (atkType == 1){
           return super.getAttackMenu();
         } else if (atkType == 2){
           return specialMenu;
         }
         return "That is not a valid input.";
-      }
+    }
   
-      public int getNumAttackMenuItems(int atkType){
+    public int getNumAttackMenuItems(int atkType){
         return 3;
-      }
+    }
   
-      @Override
-      public String getAttackString(int atkType, int move){
+    @Override
+    public String getAttackString(int atkType, int move){
         if (atkType == 1){
-          return super.getAttackString(atkType, move);
+            return super.getAttackString(atkType, move);
         }
         else{
           switch (move){
@@ -38,10 +38,10 @@ public class Water extends Pokemon{
           }
         }
         return "That is not a valid move.";
-      }
+    }
   
-      @Override
-      public int getAttackDamage(int atkType, int move){
+    @Override
+    public int getAttackDamage(int atkType, int move){
         Random rand = new Random();
         if (atkType == 1){
           return getAttackDamage(atkType, move);
@@ -56,9 +56,9 @@ public class Water extends Pokemon{
           }
         }
         return -1;
-      }
+    }
   
-      public double getAttackMultipier(Pokemon p, int atkType){
+    public double getAttackMultipier(Pokemon p, int atkType){
         return battleTable[1][p.getType()];
-      }
+    }
 }
