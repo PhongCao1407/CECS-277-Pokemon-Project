@@ -2,7 +2,7 @@ import java.lang.Math;
 
 public class HpUp extends PokemonDecorator{
     public HpUp(Pokemon p){
-        super(p,"",(int) (Math.random() + 1));
+        super(p,"+HP",(int) (Math.random() + 1));
         /*Pokemon newPokemon;
         int randHp = (int) (Math.random() + 1);
         int randMaxHp = (int) (Math.random() + 1);

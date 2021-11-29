@@ -68,7 +68,7 @@ public abstract class Pokemon extends Entity {
         }
     }
 
-    public double getAttackMultipier(Pokemon p, int atkType){
+    public double getAttackMultiplier(Pokemon p, int atkType){
         return 1;
     }
 
@@ -90,7 +90,7 @@ public abstract class Pokemon extends Entity {
     public String attack(Pokemon p, int atkType, int move){
         int damage = (int)
             (this.getAttackDamage(atkType, move) 
-            * this.getAttackMultipier(p, atkType) 
+            * this.getAttackMultiplier(p, atkType) 
             + getAttackBonus(atkType));
 
         p.takeDamage(damage);
@@ -113,55 +113,6 @@ public abstract class Pokemon extends Entity {
     public int getNumAttackTypeMenuItems(){
         return 2;
     }
-
-    /**
-     * carry out a slam attack on the given Pokemon
-     * the damage is randomized between 0 and 5
-     * @param p the Pokemon to be slammed
-     * @return a String message confirming the slam
-     */
-    // public String slam(Pokemon p){
-    //     final int MIN_DAMAGE = 0;
-    //     final int MAX_DAMAGE = 5;
-    //     int damage = 
-    //         (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
-    //         + MIN_DAMAGE;
-    //     p.takeDamage(damage);
-    //     return p.getName() + " is SLAMMED by " + this.getName() + " and takes " +  damage + " damage.";
-    // }
-
-    /**
-     * carry out a tackle attack on the given Pokemon
-     * the damage is randomized between 2 and 3
-     * @param p the Pokemon to be tackled
-     * @return a String message confirming the tackle
-     */
-    // public String tackle(Pokemon p){
-    //     final int MIN_DAMAGE = 2;
-    //     final int MAX_DAMAGE = 3;
-    //     int damage = 
-    //         (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
-    //         + MIN_DAMAGE;
-    //     p.takeDamage(damage);
-    //     return p.getName() + " is TACKLED by " + this.getName() + " and takes " +  damage + " damage.";
-    // }
-
-    /**
-     * carry out a punch attack on the given Pokemon
-     * the damage is randomized between 1 and 4
-     * @param p the Pokemon to be punched
-     * @return a String message confirming the slam
-     */
-    // public String punch(Pokemon p){
-    //     final int MIN_DAMAGE = 1;
-    //     final int MAX_DAMAGE = 4;
-    //     int damage = 
-    //         (int)(Math.random() * ((MAX_DAMAGE-MIN_DAMAGE)+1)) 
-    //         + MIN_DAMAGE;
-    //     p.takeDamage(damage);
-    //     return p.getName() + " is PUNCHED by " + this.getName() + " and takes " +  damage + " damage.";
-    // }
-
 
     /**
      * convert the Pokemon's type to an int and return it

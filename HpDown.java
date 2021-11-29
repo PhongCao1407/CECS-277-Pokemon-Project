@@ -1,6 +1,6 @@
 public class HpDown extends PokemonDecorator{
     public HpDown(Pokemon p){
-        super(p,"",-1);
+        super(p,"-HP",-1);
         /*Pokemon newPokemon;
         switch (p.getType()){
             case 0:

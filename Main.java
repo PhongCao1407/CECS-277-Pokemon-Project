@@ -17,19 +17,20 @@ public class Main{
         System.out.println("Choose your first pokemon:\n1. Charmander\n2. Bulbasaur\n3. Squirtle");
         int firstPokemon = CheckInput.getIntRange(1,3); //get first pokemon choice
 
-        Pokemon starter = new Charmander(); //predeclare starter pokemon
+        PokemonGenerator pokemonGenerator = new PokemonGenerator();
+        Pokemon starter = pokemonGenerator.getPokemon("Charmander");//predeclare starter pokemon
 
         switch(firstPokemon){ //actually declare starter pokemon
             case 1: 
-                starter = new Charmander(); 
+                starter = pokemonGenerator.getPokemon("Charmander");
                 System.out.println("             _.--\"\"`-..\n           ,'          `.\n         ,'          __  `.\n        /|          \" __   \\\n       , |           / |.   .\n       |,'          !_.'|   |\n     ,'             '   |   |\n     /              |`--'|   |\n    |                `---'   |\n    .   ,                   |                       ,\".\n     ._     '           _'  |                    , ' \\ `\n `.. `.`-...___,...---\"\"    |       __,.        ,`\"   L,|\n |, `- .`._        _,-,.'   .  __.-'-. /        .   ,    \\\n-:..     `. `-..--_.,.<       `\"      / `.        `-/ |   .\n  `,         \"\"\"\"'     `.              ,'         |   |  ',,\n    `.      '            '            /          '    |'. |/\n      `.   |              \\       _,-'           |       ''\n        `._'               \\   '\"\\                .      |\n           |                '     \\                `._  ,'\n           |                 '     \\                 .'|\n           |                 .      \\                | |\n           |                 |       L              ,' |\n           `                 |       |             /   '\n            \\                |       |           ,'   /\n          ,' \\               |  _.._ ,-..___,..-'    ,'\n         /     .             .      `!             ,j'\n        /       `.          /        .           .'/\n       .          `.       /         |        _.'.'\n        `.          7`'---'          |------\"'_.'\n       _,.`,_     _'                ,''-----\"'\n   _,-_    '       `.     .'      ,\\\n   -\" /`.         _,'     | _  _  _.|\n    \"\"--'---\"\"\"\"\"'        `' '! |! /\n                            `\" \" -'");
                 break;
             case 2: 
-                starter = new Bulbasaur(); 
+                starter = pokemonGenerator.getPokemon("Bulbasaur");
                 System.out.println("                        _,.------....___,.' ',.-.\n                     ,-'          _,.--\"        |\n                   ,'         _.-'              .\n                  /   ,     ,'                   `\n                 .   /     /                     ``.\n                 |  |     .                       \\.\\\n       ____      |___._.  |       __               \\ `.\n     .'    `---\"\"       ``\"-.--\"'`  \\               .  \\\n    .  ,            __               `              |   .\n    `,'         ,-\"'  .               \\             |    L\n   ,'          '    _.'                -._          /    |\n  ,`-.    ,\".   `--'                      >.      ,'     |\n . .'\\'   `-'       __    ,  ,-.         /  `.__.-      ,'\n ||:, .           ,'  ;  /  / \\ `        `.    .      .'/\n j|:D  \\          `--'  ' ,'_  . .         `.__, \\   , /\n/ L:_  |                 .  \"' :_;                `.'.'\n.    \"\"'                  \"\"\"\"\"'                    V\n `.                                 .    `.   _,..  `\n   `,_   .    .                _,-'/    .. `,'   __  `\n    ) \\`._        ___....----\"'  ,'   .'  \\ |   '  \\  .\n   /   `. \"`-.--\"'         _,' ,'     `---' |    `./  |\n  .   _  `\"\"'--.._____..--\"   ,             '         |\n  | .\" `. `-.                /-.           /          ,\n  | `._.'    `,_            ;  /         ,'          .\n.'          /| `-.        . ,'         ,           ,\n'-.__ __ _,','    '`-..___;-...__   ,.'\\ ____.___.'\n`\"^--'..'   '-`-^-'\"--    `-^-'`.''\"\"\"\"\"`.,^.`.--'");
                 break;
             case 3: 
-                starter = new Squirtle(); 
+                starter = pokemonGenerator.getPokemon("Squirtle");
                 System.out.println("               _,........__\n            ,-'            \"`-.\n          ,'                   `-.\n        ,'                        \\\n      ,'                           .\n      .'\\               ,\"\".       `\n     ._.'|             / |  `       \\\n     |   |            `-.'  ||       `.\n     |   |            '-._,'||       | \\\n    .`.,'             `..,'.'       , |`-.\n     l                       .'`.  _/  |   `.\n     `-.._'-   ,          _ _'   -\" \\  .     `\n`.\"\"\"\"\"'-.`-...,---------','         `. `....__.\n.'        `\"-..___      __,'\\          \\  \\     \\\n\\_ .          |   `\"\"\"\"'    `.           . \\     \\\n  `.          |              `.          |  .     L\n    `.        |`--...________.'.        j   |     |\n      `._    .'      |          `.     .|   ,     |\n         `--,\\       .            `7\"\"' |  ,      |\n            ` `      `            /     |  |      |    _,-'\"\"\"`-.\n             \\ `.     .          /      |  '      |  ,'          `.\n              \\  v.__  .        '       .   \\    /| /              \\\n               \\/    `\"\"\\\"\"\"\"\"\"\"`.       \\   \\  /.''                |\n                `        .        `._ ___,j.  `/ .-       ,---.     |\n                ,`-.      \\         .\"     `.  |/        j     `    |\n               /    `.     \\       /         \\ /         |     /    j\n              |       `-.   7-.._ .          |\"          '         /\n              |          `./_    `|          |            .     _,'\n              `.           / `----|          |-............`---'\n                \\          \\      |          |\n               ,'           )     `.         |\n                7____,,..--'      /          |\n                                  `---.__,--.'");
                 break;
         }
@@ -37,7 +38,7 @@ public class Main{
         Map m = Map.getInstance(); //get instance of Map
         int currMapNum = 1;
         m.loadMap(1); //load first map
-        Trainer player = new Trainer(yourName, starter, m); //create trainer
+        Trainer player = new Trainer(yourName, starter); //create trainer
         int playerCurrHealth = player.getHp();
         
         Super:
@@ -87,7 +88,7 @@ public class Main{
                         + "3. Throw Poke Ball\n"
                         + "4. Run Away";
                 
-                Pokemon wild = chooseRandomPokemon();
+                Pokemon wild = pokemonGenerator.generatorRandomPokemon(1);
                 System.out.println("A wild " + wild.getName() + " has appeared.\n" + wild.toString() + WPOK_MENU);
                 int opt_num = CheckInput.getIntRange(1,4);
                 encounterLoop:
@@ -242,16 +243,7 @@ public class Main{
         return CheckInput.getIntRange(1, 5);
     }
 	
-   /**
-    * from an arraylist, a random pokemon is selected (used for generating a wild pokemon)
-    * @return randPok
-    */		
-    public static Pokemon chooseRandomPokemon() {
-		ArrayList<Pokemon>wildPok = new ArrayList<Pokemon> (Arrays.asList(new Charmander(), new Squirtle(), new Ponyta(), new Squirtle(), new Staryu(), new Bulbasaur(), new Oddish()));
-		int index = rand.nextInt(7);
-		Pokemon randPok = wildPok.get(index); 
-		return randPok;
-    }
+
 
     /**
      * attack the given wild Pokemon with a Pokemon from the trainer 
@@ -282,9 +274,9 @@ public class Main{
         int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems());
         switch(attackMenu){
             case 1:
-                System.out.println(userPokemon.getBasicMenu());
-                int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumBasicMenuItems());
-                System.out.println(userPokemon.basicAttack(wild, basicAttackChoice));
+                System.out.println(userPokemon.getAttackMenu());
+                int basicAttackChoice = CheckInput.getIntRange(1, userPokemon.getNumAttackMenuItems());
+                System.out.println(userPokemon.attack(wild, 1, basicAttackChoice));
                 break;
             case 2:
                 System.out.println(userPokemon.getSpecialMenu());

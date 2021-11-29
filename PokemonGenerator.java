@@ -42,15 +42,19 @@ public class PokemonGenerator {
       
       String pok = keys.get(randIndex);
       String type = pokemon.get(pok);
-      Pokemon p;
+      Pokemon p = new Water(pok, RANDOM_HEALTH,  RANDOM_HEALTH);
       
       switch(type) {
         case "Grass": 
           p = new Grass(pok, RANDOM_HEALTH,  RANDOM_HEALTH);
+          break;
         case "Fire":
           p = new Fire(pok, RANDOM_HEALTH,  RANDOM_HEALTH);
+          break;
         case "Water":
           p = new Water(pok, RANDOM_HEALTH,  RANDOM_HEALTH);
+          break;
+          
       }
       if (level > 1) {
         int count = 0;
@@ -80,11 +84,14 @@ public class PokemonGenerator {
   }
   public Pokemon addRandomBuff(Pokemon p) {
     int randBuff = rand.nextInt(2);
+    
     switch(randBuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        PokemonDecorator.AttackUp(p); //CAN THIS BE DONE?
+        p = new AttackUp(p); //CAN THIS BE DONE?
+        break;
       case 1: //HpUp - increase maxHp by 1-2 points
-        PokemonDecorator.HpUp(p);
+        p = new HpUp(p);
+        break;
     }
     return p;
   }
@@ -92,9 +99,11 @@ public class PokemonGenerator {
     int randDebuff = rand.nextInt(2);
     switch(randDebuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        PokemonDecorator.AttackDown(p); //CAN THIS BE DONE?
+        p = new AttackUp(p); //CAN THIS BE DONE?
+        break;
       case 1: //HpUp - increase maxHp by 1-2 points
-        PokemonDecorator.HpDown(p);
+        p = new HpUp(p);
+        break;
     }
     return p;
   }
