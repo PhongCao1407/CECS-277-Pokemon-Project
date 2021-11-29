@@ -208,6 +208,77 @@ public class Main{
                 store(player);
             }
             else if (loc == 'f') {
+                System.out.println("You found a gym!");
+                String WPOK_MENU = "\nWhat do you want to do?\n" 
+                        + "1. Fight\n"
+                        + "2. Use Potion\n"
+                        + "3. Throw Poke Ball\n"
+                        + "4. Run Away";
+                
+                Pokemon gymPokemon = pokemonGenerator.generatorRandomPokemon(3);
+                System.out.println("A wild " + gymPokemon.getName() + " has appeared.\n" + gymPokemon.toString() + WPOK_MENU);
+                int opt_num = CheckInput.getIntRange(1,4);
+                System.out.println(gymPokemon.toString());
+                encounterLoop:
+                while (gymPokemon.getHp() != 0) {                       
+                    switch (opt_num) {
+                        case 1: //fight
+                            trainerAttack(player, gymPokemon);
+                            if (gymPokemon.getHp() == 0){
+                                break encounterLoop;
+                            }
+                            if (playerCurrHealth > player.getHp()){
+                                playerCurrHealth = player.getHp();
+                                int random_loc = rand.nextInt(4);
+                                Loop: //loops while the move is invalid
+                                while (true) {
+                                    switch (random_loc) {
+                                        case 0:
+                                            if (player.goNorth() != (char) 0) {
+                                                break Loop;
+                                            }
+                                            break;
+                                        case 1:
+                                            if (player.goSouth() != (char) 0) {
+                                                break Loop;
+                                            }
+                                            break;
+                                        case 2:
+                                            if (player.goEast() != (char) 0) {
+                                                break Loop;
+                                            }
+                                            break;
+                                        case 3:
+                                            if (player.goWest() != (char) 0) {
+                                                break Loop;
+                                            }
+                                            break;
+                                    }
+                                    random_loc = rand.nextInt(4);
+                                }
+                                continue Super;
+                            }
+                            break;
+                        case 2: //use potion	
+                            if (player.hasPotion() == true) {
+                                System.out.println("Which pokemon would you like to heal?");
+                                System.out.println(player.getPokemonList());
+                                int pokIndex = CheckInput.getIntRange(1, player.getNumPokemon());
+                                player.usePotion(pokIndex-1);
+                                System.out.println("Pokemon " + player.getPokemon(pokIndex-1) + " has healed from damage!");
+                            }
+                            else {
+                                System.out.println("You don't have any potions :(");
+                            }
+                            break;
+                    }
+                    System.out.println(gymPokemon.toString());
+                    System.out.println(WPOK_MENU);
+                    opt_num = CheckInput.getIntRange(1,4);
+                }
+
+
+
                 System.out.println("You found a finish!");
 				if (currMapNum<3) {
                     currMapNum += 1;
