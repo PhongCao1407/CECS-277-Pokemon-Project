@@ -95,7 +95,7 @@ public class Main{
                     while (wild.getHp() != 0) {                       
                         switch (opt_num) {
                             case 1: //fight
-                                trainerAttack(player, wild);
+                                wild = trainerAttack(player, wild);
                                 if (wild.getHp() == 0){
                                     break encounterLoop;
                                 }
@@ -211,19 +211,18 @@ public class Main{
                 System.out.println("You found a gym!");
                 String WPOK_MENU = "\nWhat do you want to do?\n" 
                         + "1. Fight\n"
-                        + "2. Use Potion\n"
-                        + "3. Throw Poke Ball\n"
-                        + "4. Run Away";
+                        + "2. Use Potion\n";
+                        
                 
-                Pokemon gymPokemon = pokemonGenerator.generatorRandomPokemon(3);
+                Pokemon gymPokemon = pokemonGenerator.generatorRandomPokemon(2);
                 System.out.println("A wild " + gymPokemon.getName() + " has appeared.\n" + gymPokemon.toString() + WPOK_MENU);
-                int opt_num = CheckInput.getIntRange(1,4);
+                int opt_num = CheckInput.getIntRange(1,2);
                 System.out.println(gymPokemon.toString());
                 encounterLoop:
                 while (gymPokemon.getHp() != 0) {                       
                     switch (opt_num) {
                         case 1: //fight
-                            trainerAttack(player, gymPokemon);
+                            gymPokemon = trainerAttack(player, gymPokemon);
                             if (gymPokemon.getHp() == 0){
                                 break encounterLoop;
                             }
@@ -344,7 +343,7 @@ public class Main{
                 System.out.println("You died!\nGame Over.");
                 System.exit(0);
             }
-            return userPokemon;
+            return wild;
         }
 
         System.out.println(userPokemon.getName() + ", I choose you!");
@@ -367,9 +366,10 @@ public class Main{
         }
         if (wild.getHp() == 0){
             System.out.println(wild.getName() + " fainted.");
-            return userPokemon;
+            return wild;
         }
         
+        System.out.println(wild.toString());
         //The wild Pokemon attack back
         int randAttackType = rand.nextInt(2); 
         switch (randAttackType){
@@ -382,7 +382,7 @@ public class Main{
                 System.out.println(wild.attack(userPokemon, 2, randSpecialAttack));
                 break;
         }
-        return userPokemon;
+        return wild;
 
 
     }

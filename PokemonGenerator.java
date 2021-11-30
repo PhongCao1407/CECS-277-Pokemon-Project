@@ -62,7 +62,7 @@ public class PokemonGenerator {
       if (level > 1) {
         int count = 0;
         while (count != level){
-          addRandomBuff(p); //the amount of buffs applied depends on pokemon level
+          p = addRandomBuff(p); //the amount of buffs applied depends on pokemon level
           count += 1; 
         }
       }
