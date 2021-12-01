@@ -1,14 +1,27 @@
+/** 
+* Subclass Fire extends from Superclass Pokemon
+*/
 public class Fire extends Pokemon{
     private String fireAttackMenu = 
         "1. Ember\n" 
       + "2. Fire Blast\n"
       + "3. Fire Punch";
     public int numSpecialMenuItems = 3;
-  
+
+/**
+* constructor class
+* @param pokemon's name
+* @param pokemon's hp 
+* @param pokemon's maxhp
+*/    
     public Fire(String n, int h, int m){
       super(n, h, m);
     } 
 
+/**
+* @param attack type (1 corresponds to basic and 2 to special)
+* @return basic menu or special menu
+*/ 
     public String getAttackMenu(int atkType){
       if (atkType == 1){
         return super.getAttackMenu(1);
@@ -18,10 +31,21 @@ public class Fire extends Pokemon{
       return "That is not a valid input.";
     }
 
+/**
+* @param attack type
+* @return total number of menu options
+*/    
     public int getNumAttackMenuItems(int atkType){
       return 3;
     }
 
+
+/**
+* @param attack type
+* @param move
+* @return a string of the selected move 
+* slam, tackle, punch if basic and ember,blast,fire punch if special
+*/ 
     @Override
     public String getAttackString(int atkType, int move){
       if (atkType == 1){
@@ -40,6 +64,11 @@ public class Fire extends Pokemon{
       return "That is not a valid move.";
     }
 
+/**
+* @param attack type
+* @param move 
+* @return attack damage
+*/    
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
@@ -66,6 +95,11 @@ public class Fire extends Pokemon{
       return -1;
     }
 
+/**
+* @param pokemon 
+* @param attack type
+* @return battleTable[0][p.getType()]
+*/
     public double getAttackMultipier(Pokemon p, int atkType){
       return battleTable[0][p.getType()];
     }
