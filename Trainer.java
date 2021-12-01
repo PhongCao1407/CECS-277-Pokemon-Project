@@ -1,7 +1,9 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+*Subclass Trainer extends from superclass Entity
+*/
 public class Trainer extends Entity {
 	
 	private int money = 25;
@@ -234,6 +236,9 @@ public class Trainer extends Entity {
 		}
 	}
 
+	/**
+	* buffs all pokemon
+	*/
 	public void buffAllPokemon() {
 		PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
 		for(int i = 0; i < pokemon.size(); i++){
@@ -243,7 +248,11 @@ public class Trainer extends Entity {
 			pokemon.add(i, currPokemon);
 		}
 	}
-
+	
+	/**
+	* @param index of pokemon
+	* debuffs selected pokemon
+	*/
 	public void debuffPokemon(int index) {
 		Pokemon currPokemon = this.getPokemon(index);
 		pokemon.remove(currPokemon);
