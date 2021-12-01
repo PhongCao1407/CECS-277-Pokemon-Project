@@ -276,7 +276,8 @@ public class Main{
                     opt_num = CheckInput.getIntRange(1,4);
                 }
 
-
+                System.out.println("You defeated a gym leader Pokemon!");
+                player.buffAllPokemon();
 
                 System.out.println("You found a finish!");
 				if (currMapNum<3) {
@@ -325,14 +326,46 @@ public class Main{
         //Let the player choose a Pokemon from the trainer
         System.out.println("Choose a Pokemon\n");
         System.out.println(t.getPokemonList());
-        Pokemon userPokemon = t.getPokemon(CheckInput.getIntRange(1, t.getNumPokemon()) - 1); //Get chosen Pokemon
+        int userPokemonChoice = CheckInput.getIntRange(1, t.getNumPokemon()) - 1;
+        Pokemon userPokemon = t.getPokemon(userPokemonChoice); //Get chosen Pokemon
+        System.out.println("User Type before: " + userPokemon.getType());
+        System.out.println("Wild Type before: " + wild.getType());
+
 
         if (rand.nextInt(4) == 0){
+            // int wildType = wild.getType();
             wild = pokemonGenerator.addRandomDeBuff(wild);
+            // switch (wildType){
+            //     case 0:
+            //         wild = (Fire) wild;
+            //         break;
+            //     case 1:
+            //         wild = (Water) wild;
+            //         break;
+            //     case 2:
+            //         wild = (Grass) wild;
+            //         break;
+            //   }
         }
         if (rand.nextInt(10) == 0){
-            userPokemon = pokemonGenerator.addRandomDeBuff(userPokemon);
+            // int userType = userPokemon.getType();
+            // userPokemon = pokemonGenerator.addRandomDeBuff(userPokemon);
+            t.debuffPokemon(userPokemonChoice);
+            // switch (userType){
+            //     case 0:
+            //         userPokemon= (Fire) userPokemon;
+            //         break;
+            //     case 1:
+            //         userPokemon = (Water) userPokemon;
+            //         break;
+            //     case 2:
+            //         userPokemon = (Grass) userPokemon;
+            //         break;
+            //   }
         }
+
+        System.out.println("User Type after: " + userPokemon.getType());
+        System.out.println("Wild Type after: " + wild.getType());
 
         if (userPokemon.getHp() == 0){ //Check if the chosen Pokemon is fainted. If it is, deal damage to the trainer
             System.out.println(userPokemon.getName() + " is fainted.");
@@ -350,7 +383,7 @@ public class Main{
         System.out.println(userPokemon.getAttackTypeMenu());
 
         //Attack the wild Pokemon
-        int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackMenuItems(1));
+        int attackMenu = CheckInput.getIntRange(1,userPokemon.getNumAttackTypeMenuItems());
         switch(attackMenu){
             case 1:
                 System.out.println(userPokemon.getAttackMenu(1));
@@ -369,19 +402,23 @@ public class Main{
             return wild;
         }
         
-        System.out.println(wild.toString());
         //The wild Pokemon attack back
         int randAttackType = rand.nextInt(2); 
         switch (randAttackType){
             case 0:
-                int randBasicAttack = rand.nextInt(wild.getNumAttackMenuItems(1)) + 1;
+                int randBasicAttack = rand.nextInt(3) + 1;
                 System.out.println(wild.attack(userPokemon, 1, randBasicAttack));
                 break;
             case 1:
-                int randSpecialAttack = rand.nextInt(wild.getNumAttackMenuItems(2)) + 1;
+                int randSpecialAttack = rand.nextInt(3) + 1;
                 System.out.println(wild.attack(userPokemon, 2, randSpecialAttack));
                 break;
         }
+
+        if (userPokemon.getHp() <= 0){
+            System.out.println(userPokemon.getName() + " fainted!");
+        }
+
         return wild;
 
 

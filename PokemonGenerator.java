@@ -86,28 +86,60 @@ public class PokemonGenerator {
     return p;
   }
   public Pokemon addRandomBuff(Pokemon p) {
+    int pokemonType = p.getType();
     int randBuff = rand.nextInt(2);
-    
     switch(randBuff) {
       case 0: //AttackUp - increase damage by 1-2 points
+        System.out.println("Buff attack");
         p = new AttackUp(p); //CAN THIS BE DONE?
         break;
       case 1: //HpUp - increase maxHp by 1-2 points
+      System.out.println("Buff hp");
         p = new HpUp(p);
         break;
     }
+
+    switch (pokemonType){
+      case 0:
+        p = new Fire(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+      case 1:
+        p = new Water(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+      case 2:
+        p = new Grass(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+    }
+    
     return p;
   }
+  
   public Pokemon addRandomDeBuff(Pokemon p) {
+    int pokemonType = p.getType();
     int randDebuff = rand.nextInt(2);
     switch(randDebuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        p = new AttackUp(p); //CAN THIS BE DONE?
+        System.out.println("deBuff attack");
+        p = new AttackDown(p); //CAN THIS BE DONE?
         break;
       case 1: //HpUp - increase maxHp by 1-2 points
-        p = new HpUp(p);
+        System.out.println("deBuff hp");
+        p = new HpDown(p);
         break;
     }
+    
+    switch (pokemonType){
+      case 0:
+        p = new Fire(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+      case 1:
+        p = new Water(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+      case 2:
+        p = new Grass(p.getName(), p.getHp(), p.getMaxHp());
+        break;
+    }
+
     return p;
   }
 }

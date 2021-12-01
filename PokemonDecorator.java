@@ -3,14 +3,15 @@ public abstract class PokemonDecorator extends Pokemon{
 
     public PokemonDecorator(Pokemon p, String extraName, int extraHp){
         super(p.getName() + extraName, p.getHp() + extraHp, p.getMaxHp() + extraHp);
-        switch (p.getType()){
-            case 0:
-                pokemon = new Fire(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
-            case 1:
-                pokemon = new Water(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
-            case 2:
-                pokemon = new Grass(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
-        }
+        pokemon = p;
+        // switch (p.getType()){
+        //     case 0:
+        //         pokemon = new Fire(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
+        //     case 1:
+        //         pokemon = new Water(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
+        //     case 2:
+        //         pokemon = new Grass(p.getName()+extraName, p.getHp()+extraHp, p.getMaxHp()+extraHp);
+        // }
     }
 
     

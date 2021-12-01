@@ -19,7 +19,6 @@ public class Grass extends Pokemon{
     }
 
     public int getNumAttackMenuItems(int atkType){
-      System.out.println("---------------------------------------------");
       return 3;
     }
 
