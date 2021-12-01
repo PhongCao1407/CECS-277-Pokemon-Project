@@ -41,8 +41,8 @@ public class Grass extends Pokemon{
 
 /**
 * @param attack type
-* @param move (dependent on attack type)
-* @return a string of the selected move (slam,punch,kick if basic and ember,blast,fire punch if special)
+* @param move 
+* @return a string of the selected move (slam,tackle,punch if basic and vine whip,razor leaf,solar beam if special)
 *
 */
     @Override
