@@ -9,7 +9,7 @@ public class Fire extends Pokemon{
     public int numSpecialMenuItems = 3;
 
 /**
-* constructor class
+* constructor
 * @param pokemon's name
 * @param pokemon's hp 
 * @param pokemon's maxhp
