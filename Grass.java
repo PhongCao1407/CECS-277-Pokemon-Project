@@ -1,14 +1,27 @@
+/** 
+* Subclass Grass extends from Superclass Pokemon
+*/
 public class Grass extends Pokemon{
     private String grassAttackMenu = 
         "1. Vine Whip\n" 
       + "2. Razor Leaf\n"
       + "3. Solar Beam";
     public int numSpecialMenuItems = 3;
-  
+    
+/**
+* constructor
+* @param pokemon's name
+* @param pokemon's hp 
+* @param pokemon's maxhp
+*/  
     public Grass(String n, int h, int m){
       super(n, h, m);
     } 
-
+    
+/**
+* @param attack type (1 corresponds to basic and 2 to special)
+* @return basic menu or special menu
+*/
     public String getAttackMenu(int atkType){
       if (atkType == 1){
         return super.getAttackMenu(1);
@@ -17,11 +30,21 @@ public class Grass extends Pokemon{
       }
       return "That is not a valid input.";
     }
-
+    
+/**
+* @param attack type
+* @return total number of menu options
+*/
     public int getNumAttackMenuItems(int atkType){
       return 3;
     }
 
+/**
+* @param attack type
+* @param move (dependent on attack type)
+* @return a string of the selected move (slam,punch,kick if basic and ember,blast,fire punch if special)
+*
+*/
     @Override
     public String getAttackString(int atkType, int move){
       if (atkType == 1){
@@ -40,6 +63,11 @@ public class Grass extends Pokemon{
       return "That is not a valid move.";
     }
 
+/**
+* @param attack type
+* @param move 
+* @return attack damage
+*/
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
@@ -66,7 +94,12 @@ public class Grass extends Pokemon{
       }
       return -1;
     }
-
+    
+/**
+* @param pokemon 
+* @param attack type
+* @return battleTable[0][p.getType()]
+*/
     public double getAttackMultipier(Pokemon p, int atkType){
       return battleTable[2][p.getType()];
     }
