@@ -1,6 +1,12 @@
 import java.io.*;
 import java.util.*;
 
+/**
+* Applies factory design pattern
+* Scans text file and stores key, value pairs into hashmap
+* Generates pokemons given their level or string name (2 different methods)
+* Generates random buff/debuff
+*/
 public class PokemonGenerator {
   HashMap <String, String> pokemon = new HashMap<String, String>();
   static PokemonGenerator instance = null;
@@ -10,7 +16,10 @@ public class PokemonGenerator {
    private static final int MAX_HEALTH = 25;
    private static int RANDOM_HEALTH = 
         (int)(Math.random() * ((MAX_HEALTH-MIN_HEALTH)+1)) + MIN_HEALTH;   
-  
+
+/**
+* Scans and stores
+*/  
   private PokemonGenerator() {
     try {
       Scanner read = new Scanner(new File("PokemonList.txt"));
@@ -27,14 +36,22 @@ public class PokemonGenerator {
       System.out.println("File was not found");
     }
   }
-
+  
+/**
+* creates PokemonGenerator object
+* @return instance (when instance != null)
+*/
   public static PokemonGenerator getInstance() {
     if (instance == null){
       instance = new PokemonGenerator();
     }
     return instance;
   }
-
+  
+/**
+* @param pokemon's level
+* @return randomly constructed pokemon with a random buff (if level is > 1)
+*/
   public Pokemon generatorRandomPokemon(int level) {
       int randIndex = rand.nextInt(23);  
       ArrayList<String> keys = new ArrayList<>(Arrays.asList("Bulbasaur", "Charmander", "Squirtle",
@@ -69,6 +86,10 @@ public class PokemonGenerator {
       return p;    
   }
 
+/**
+* @param pokemon's name
+* @return contructed pokemon
+*/
   public Pokemon getPokemon(String name){
     Pokemon p;
     if (name == "Bulbasaur" || name == "Oddish" || name == "Bellsprout" || name == "Exeggcute" || name == "Tangela") {
@@ -85,6 +106,11 @@ public class PokemonGenerator {
     }
     return p;
   }
+  
+/**
+* @param pokemon object
+* @return pokemon with a random buff
+*/
   public Pokemon addRandomBuff(Pokemon p) {
     int pokemonType = p.getType();
     int randBuff = rand.nextInt(2);
@@ -97,8 +123,7 @@ public class PokemonGenerator {
       System.out.println("Buff hp");
         p = new HpUp(p);
         break;
-    }
-
+    } 
     switch (pokemonType){
       case 0:
         p = new Fire(p.getName(), p.getHp(), p.getMaxHp());
@@ -114,6 +139,10 @@ public class PokemonGenerator {
     return p;
   }
   
+/**
+* @param pokemon object
+* @return pokemon with a random debuff
+*/   
   public Pokemon addRandomDeBuff(Pokemon p) {
     int pokemonType = p.getType();
     int randDebuff = rand.nextInt(2);
