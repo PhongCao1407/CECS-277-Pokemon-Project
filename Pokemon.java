@@ -10,14 +10,17 @@ public abstract class Pokemon extends Entity {
          {.5,2,1}};
     
     /**
-     * the type of the Pokemon, to be implemented later in the subclasses
+     * The Pokemon constructor
+     * @param n the name
+     * @param h current hp
+     * @param m max hp
      */
-
     public Pokemon(String n, int h, int m){
         super(n, h, m);
     }
 
     /**
+     * @param atkType the basic attacks are included here, it is to be override in the elemental classes
      * @return the basic menu as a String
      */
     public String getAttackMenu(int atkType){
@@ -27,12 +30,18 @@ public abstract class Pokemon extends Entity {
     }
 
     /**
+     * @param atkType the basic attacks are included here, it is to be override in the elemental classes
      * @return the number of choices in the basic menu (3)
      */
     public int getNumAttackMenuItems(int atkType){
         return 3;
     }
 
+    /**
+     * @param atkType the basic attacks are included here, it is to be override in the elemental classes
+     * @param move the attacking move, only the basic ones are included here
+     * @return the attack message
+     */    
     public String getAttackString(int atkType, int move){
 
         switch (move){
@@ -47,6 +56,11 @@ public abstract class Pokemon extends Entity {
         }
     }
 
+    /**
+     * @param atkType the basic attacks are calculated here, it is to be override in the elemental classes
+     * @param move the attacking move, only the basic ones are included here
+     * @return the attack damage
+     */
     public int getAttackDamage(int atkType, int move){
         switch (move){
             case 1:
@@ -69,10 +83,19 @@ public abstract class Pokemon extends Entity {
         }
     }
 
+    /**
+     * @param p Pokemon to be attacked
+     * @param atkType the attacked Pokemon's type
+     * @return return 1 here, to be override in the base element classes
+     */
     public double getAttackMultiplier(Pokemon p, int atkType){
         return 1;
     }
 
+    /**
+     * @param atkType the type of the pokemon
+     * @return return 0 here, it is to be override in the buff classes
+     */
     public int getAttackBonus(int atkType){
         return 0;
     }
@@ -80,9 +103,6 @@ public abstract class Pokemon extends Entity {
 
     /**
      * attack a Pokemon with a move given as an int 
-     * 1: slam
-     * 2: tackle
-     * 3: punch
      * @param p the Pokemon to be attacked
      * @param atkType the attack type
      * @param move the move to attack the Pokemon

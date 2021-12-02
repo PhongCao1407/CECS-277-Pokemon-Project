@@ -8,20 +8,20 @@ public class Grass extends Pokemon{
       + "3. Solar Beam";
     public int numSpecialMenuItems = 3;
     
-/**
-* constructor
-* @param pokemon's name
-* @param pokemon's hp 
-* @param pokemon's maxhp
-*/  
+    /**
+    * constructor
+    * @param pokemon's name
+    * @param pokemon's hp 
+    * @param pokemon's maxhp
+    */  
     public Grass(String n, int h, int m){
       super(n, h, m);
     } 
     
-/**
-* @param attack type (1 corresponds to basic and 2 to special)
-* @return basic menu or special menu
-*/
+    /**
+    * @param attack type (1 corresponds to basic and 2 to special)
+    * @return basic menu or special menu
+    */
     public String getAttackMenu(int atkType){
       if (atkType == 1){
         return super.getAttackMenu(1);
@@ -31,20 +31,20 @@ public class Grass extends Pokemon{
       return "That is not a valid input.";
     }
     
-/**
-* @param attack type
-* @return total number of menu options
-*/
+    /**
+    * @param attack type
+    * @return total number of menu options
+    */
     public int getNumAttackMenuItems(int atkType){
       return 3;
     }
 
-/**
-* @param attack type
-* @param move 
-* @return a string of the selected move (slam,tackle,punch if basic and vine whip,razor leaf,solar beam if special)
-*
-*/
+    /**
+    * @param attack type
+    * @param move 
+    * @return a string of the selected move (slam,tackle,punch if basic and vine whip,razor leaf,solar beam if special)
+    *
+    */
     @Override
     public String getAttackString(int atkType, int move){
       if (atkType == 1){
@@ -63,11 +63,11 @@ public class Grass extends Pokemon{
       return "That is not a valid move.";
     }
 
-/**
-* @param attack type
-* @param move 
-* @return attack damage
-*/
+    /**
+    * @param attack type
+    * @param move 
+    * @return attack damage
+    */
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
@@ -95,11 +95,11 @@ public class Grass extends Pokemon{
       return -1;
     }
     
-/**
-* @param pokemon 
-* @param attack type
-* @return battleTable[0][p.getType()]
-*/
+    /**
+    * @param pokemon 
+    * @param attack type
+    * @return battleTable[0][p.getType()]
+    */
     public double getAttackMultiplier(Pokemon p, int atkType){
       if (atkType == 1){
         return super.getAttackMultiplier(p, atkType);

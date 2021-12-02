@@ -331,35 +331,11 @@ public class Main{
         
 
         if (rand.nextInt(4) == 0){
-            // int wildType = wild.getType();
             wild = pokemonGenerator.addRandomDeBuff(wild);
-            // switch (wildType){
-            //     case 0:
-            //         wild = (Fire) wild;
-            //         break;
-            //     case 1:
-            //         wild = (Water) wild;
-            //         break;
-            //     case 2:
-            //         wild = (Grass) wild;
-            //         break;
-            //   }
         }
         if (rand.nextInt(10) == 0){
-            // int userType = userPokemon.getType();
-            // userPokemon = pokemonGenerator.addRandomDeBuff(userPokemon);
             t.debuffPokemon(userPokemonChoice);
-            // switch (userType){
-            //     case 0:
-            //         userPokemon= (Fire) userPokemon;
-            //         break;
-            //     case 1:
-            //         userPokemon = (Water) userPokemon;
-            //         break;
-            //     case 2:
-            //         userPokemon = (Grass) userPokemon;
-            //         break;
-            //   }
+
         }
 
 

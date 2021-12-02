@@ -79,6 +79,7 @@ public class Trainer extends Entity {
 	
 	/**
 	 * heals a certain pokemon the user specifies and decrements potion amount IF user has potions
+	 * also add a random buff to the Pokemon
 	 * @param pokeIndex	
 	 */
 	public void usePotion(int pokeIndex) {
@@ -250,7 +251,7 @@ public class Trainer extends Entity {
 	}
 	
 	/**
-	* @param index of pokemon
+	* @param index index of pokemon
 	* debuffs selected pokemon
 	*/
 	public void debuffPokemon(int index) {
@@ -284,6 +285,10 @@ public class Trainer extends Entity {
 		return PokemonList;
 	}
 
+	/**
+	* @param index index of pokemon
+	* remove selected pokemon from the pokemon list
+	*/
 	public Pokemon removePokemon(int index) {
 		return pokemon.remove(index); 
 	}
