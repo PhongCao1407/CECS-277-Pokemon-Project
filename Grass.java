@@ -10,16 +10,16 @@ public class Grass extends Pokemon{
     
     /**
     * constructor
-    * @param pokemon's name
-    * @param pokemon's hp 
-    * @param pokemon's maxhp
-    */  
+    * @param n name
+    * @param h hp 
+    * @param m maxhp
+    */    
     public Grass(String n, int h, int m){
       super(n, h, m);
     } 
     
     /**
-    * @param attack type (1 corresponds to basic and 2 to special)
+    * @param atkType type (1 corresponds to basic and 2 to special)
     * @return basic menu or special menu
     */
     public String getAttackMenu(int atkType){
@@ -32,7 +32,7 @@ public class Grass extends Pokemon{
     }
     
     /**
-    * @param attack type
+    * @param atkType type
     * @return total number of menu options
     */
     public int getNumAttackMenuItems(int atkType){
@@ -40,10 +40,9 @@ public class Grass extends Pokemon{
     }
 
     /**
-    * @param attack type
-    * @param move 
+    * @param atkType type
+    * @param move the attacking move
     * @return a string of the selected move (slam,tackle,punch if basic and vine whip,razor leaf,solar beam if special)
-    *
     */
     @Override
     public String getAttackString(int atkType, int move){
@@ -64,10 +63,10 @@ public class Grass extends Pokemon{
     }
 
     /**
-    * @param attack type
-    * @param move 
+    * @param atkType type
+    * @param move the attacking move
     * @return attack damage
-    */
+    */  
     @Override
     public int getAttackDamage(int atkType, int move){
       if (atkType == 1){
@@ -96,10 +95,10 @@ public class Grass extends Pokemon{
     }
     
     /**
-    * @param pokemon 
-    * @param attack type
-    * @return battleTable[0][p.getType()]
-    */
+    * @param p the pokemon to be attacked
+    * @param atkType type
+    * @return the attack multiplier for grass versus the given type
+    */  
     public double getAttackMultiplier(Pokemon p, int atkType){
       if (atkType == 1){
         return super.getAttackMultiplier(p, atkType);
