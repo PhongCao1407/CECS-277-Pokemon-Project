@@ -49,7 +49,7 @@ public class PokemonGenerator {
   }
   
   /**
-  * @param pokemon's level
+  * @param level pokemon level
   * @return randomly constructed pokemon with a random buff (if level is > 1)
   */
   public Pokemon generatorRandomPokemon(int level) {
@@ -87,28 +87,30 @@ public class PokemonGenerator {
   }
 
   /**
-  * @param pokemon's name
+  * @param name name
   * @return contructed pokemon
   */
   public Pokemon getPokemon(String name){
-    Pokemon p;
-    if (name == "Bulbasaur" || name == "Oddish" || name == "Bellsprout" || name == "Exeggcute" || name == "Tangela") {
-      p = new Grass(name, RANDOM_HEALTH,  RANDOM_HEALTH);
+    Pokemon p = new Grass(name, RANDOM_HEALTH,  RANDOM_HEALTH); //Predeclare Pokemon so that the compiler will shut up
+    String type = pokemon.get(name);
+    switch(type) {
+      case "Grass": 
+        p = new Grass(name, RANDOM_HEALTH,  RANDOM_HEALTH);
+        break;
+      case "Fire":
+        p = new Fire(name, RANDOM_HEALTH,  RANDOM_HEALTH);
+        break;
+      case "Water":
+        p = new Water(name, RANDOM_HEALTH,  RANDOM_HEALTH);
+        break;
+        
     }
-    else if (name == "Charmander" || name == "Vulpix" || name == "Growlithe" || name == "Ponyta" || name == "Moltres") {
-      p = new Fire(name, RANDOM_HEALTH,  RANDOM_HEALTH);
-    }
-    else if (name == "Squirtle" || name == "Pysduck" || name == "Poliwag" || name == "Tentacool" || name == "Slowpoke" || name == "Seel" || name == "Shellder" || name == "Krabby" || name == "Horsea" || name == "Goldeen" || name == "Staryu" || name == "Magikarp" || name == "Lapras") {
-      p = new Water(name, RANDOM_HEALTH,  RANDOM_HEALTH);
-    }
-    else {
-      return null;
-    }
+
     return p;
   }
   
   /**
-  * @param pokemon object
+  * @param p pokemon
   * @return pokemon with a random buff
   */
   public Pokemon addRandomBuff(Pokemon p) {
@@ -138,7 +140,7 @@ public class PokemonGenerator {
   }
   
   /**
-  * @param pokemon object
+  * @param p pokemon
   * @return pokemon with a random debuff
   */   
   public Pokemon addRandomDeBuff(Pokemon p) {

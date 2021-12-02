@@ -126,11 +126,6 @@ public class Trainer extends Entity {
 		if ((randNum < percent) && hasPokeball()){
 			pokemon.add(p);
 			pokeballs -= 1;
-			if (this.getNumPokemon() > 6){ //This maybe implement in main, im not sure where it is suppose to be implemented
-				System.out.println("Please choose a pokemon to discard.\n" + this.getPokemonList());
-				int input = CheckInput.getIntRange(1,7);
-				pokemon.remove(input - 1);
-			}
 			return true;
 		}
 		
@@ -161,7 +156,6 @@ public class Trainer extends Entity {
 			}
 		
 		else {
-			System.out.println("You cannot go that way.");
 			return (char) 0;
 		}
 	}
@@ -179,7 +173,6 @@ public class Trainer extends Entity {
 			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
-			System.out.println("You cannot go that way.");
 			return (char) 0;
 		}
 	}
@@ -193,11 +186,9 @@ public class Trainer extends Entity {
 		int x = getLocation().x;
 		if (x < 4) {
 			this.loc.translate(+1, 0);
-
 			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
-			System.out.println("You cannot go that way.");
 			return (char) 0;
 		}
 	}
@@ -215,7 +206,6 @@ public class Trainer extends Entity {
 			return Map.getInstance().getCharAtLoc(getLocation());
 		}
 		else {
-			System.out.println("You cannot go that way.");
 			return (char) 0;
 		}
 	}

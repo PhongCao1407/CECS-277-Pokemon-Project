@@ -118,7 +118,12 @@ public class Main{
                             case 3: //throw pokeball
                                 if (player.hasPokeball()) {
                                     if (player.catchPokemon(wild) == true) {
-                                        System.out.println("You caught " + wild.getName() + "!");			
+                                        System.out.println("You caught " + wild.getName() + "!");
+                                        if (player.getNumPokemon() > 6){
+                                            System.out.println("Please choose a pokemon to discard.\n" + player.getPokemonList());
+                                            int input = CheckInput.getIntRange(1,7);
+                                            player.removePokemon(input - 1);
+                                        }			
                                         break encounterLoop;
                                     }
                                     else {
@@ -226,6 +231,15 @@ public class Main{
                             }
                             if (playerCurrHealth > player.getHp()){
                                 playerCurrHealth = player.getHp();
+                            }
+                            int deadPokemon = 0;
+                            for (int i = 0; i < player.getNumPokemon(); i++){
+                                if (player.getPokemon(i).getHp() == 0){
+                                    deadPokemon++;
+                                }
+                            }
+                            if (deadPokemon == player.getNumPokemon()){
+                                System.out.println("All your Pokemon fainted! Please try again later.");
                                 int random_loc = rand.nextInt(4);
                                 Loop: //loops while the move is invalid
                                 while (true) {
@@ -254,6 +268,7 @@ public class Main{
                                     random_loc = rand.nextInt(4);
                                 }
                                 continue Super;
+                            
                             }
                             break;
                         case 2: //use potion	
@@ -289,6 +304,9 @@ public class Main{
                      m.reveal(m.findStart());
 				}
 			}
+            else{
+                System.out.println("You cannot go that way.");
+            }
             if (loc == 'i' || loc == 'p' || loc == 'w') {
 				m.removeCharAtLoc(player.getLocation());
 			}
