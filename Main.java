@@ -321,6 +321,7 @@ public class Main{
      * attack the given wild Pokemon with a Pokemon from the trainer 
      * @param t the trainer attacking
      * @param wild the wild Pokemon to be attacked
+     * @return the wild Pokemon after the attack
      */
     public static Pokemon trainerAttack(Trainer t, Pokemon wild){
         //Let the player choose a Pokemon from the trainer
