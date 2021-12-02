@@ -146,7 +146,7 @@ public class PokemonGenerator {
     int randDebuff = rand.nextInt(2);
     switch(randDebuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        p = new AttackDown(p); //CAN THIS BE DONE?
+        p = new AttackDown(p); 
         break;
       case 1: //HpUp - increase maxHp by 1-2 points
         p = new HpDown(p);
