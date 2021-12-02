@@ -127,8 +127,8 @@ public class Trainer extends Entity {
 			pokeballs -= 1;
 			if (this.getNumPokemon() > 6){ //This maybe implement in main, im not sure where it is suppose to be implemented
 				System.out.println("Please choose a pokemon to discard.\n" + this.getPokemonList());
-				int input = CheckInput.getIntRange(0,6);
-				pokemon.remove(input);
+				int input = CheckInput.getIntRange(1,7);
+				pokemon.remove(input - 1);
 			}
 			return true;
 		}

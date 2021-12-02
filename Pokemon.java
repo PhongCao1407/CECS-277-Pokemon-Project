@@ -92,7 +92,7 @@ public abstract class Pokemon extends Entity {
         int damage = (int)
             (this.getAttackDamage(atkType, move) 
             * this.getAttackMultiplier(p, atkType) 
-            + getAttackBonus(atkType));
+            + this.getAttackBonus(atkType));
 
         p.takeDamage(damage);
         return p.getName() + " is " + getAttackString(atkType, move) + " by " 

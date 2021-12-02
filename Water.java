@@ -88,7 +88,10 @@ public class Water extends Pokemon{
 * @param attack type
 * @return battleTable[0][p.getType()]
 */  
-    public double getAttackMultipier(Pokemon p, int atkType){
+    public double getAttackMultiplier(Pokemon p, int atkType){
+        if (atkType == 1){
+            return super.getAttackMultiplier(p, atkType);
+          }
         return battleTable[1][p.getType()];
     }
 }

@@ -16,6 +16,9 @@ public abstract class PokemonDecorator extends Pokemon{
 
     
     public String getAttackMenu(int atkType){
+        if (atkType == 1){
+            return super.getAttackMenu(atkType);
+        }
         return pokemon.getAttackMenu(atkType);
     }
 
@@ -36,11 +39,18 @@ public abstract class PokemonDecorator extends Pokemon{
 
     
     public double getAttackMultiplier(Pokemon p, int type){
+        if (type == 1){
+            return super.getAttackMultiplier(p, type);
+        }
         return pokemon.getAttackMultiplier(p, type);
     }
 
     
     public int getAttackBonus(int type){
         return pokemon.getAttackBonus(type);
+    }
+
+    public int getType(){
+        return pokemon.getType();
     }
 }

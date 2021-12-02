@@ -116,11 +116,9 @@ public class PokemonGenerator {
     int randBuff = rand.nextInt(2);
     switch(randBuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        System.out.println("Buff attack");
         p = new AttackUp(p); //CAN THIS BE DONE?
         break;
       case 1: //HpUp - increase maxHp by 1-2 points
-      System.out.println("Buff hp");
         p = new HpUp(p);
         break;
     } 
@@ -148,11 +146,9 @@ public class PokemonGenerator {
     int randDebuff = rand.nextInt(2);
     switch(randDebuff) {
       case 0: //AttackUp - increase damage by 1-2 points
-        System.out.println("deBuff attack");
         p = new AttackDown(p); //CAN THIS BE DONE?
         break;
       case 1: //HpUp - increase maxHp by 1-2 points
-        System.out.println("deBuff hp");
         p = new HpDown(p);
         break;
     }

@@ -328,9 +328,7 @@ public class Main{
         System.out.println(t.getPokemonList());
         int userPokemonChoice = CheckInput.getIntRange(1, t.getNumPokemon()) - 1;
         Pokemon userPokemon = t.getPokemon(userPokemonChoice); //Get chosen Pokemon
-        System.out.println("User Type before: " + userPokemon.getType());
-        System.out.println("Wild Type before: " + wild.getType());
-
+        
 
         if (rand.nextInt(4) == 0){
             // int wildType = wild.getType();
@@ -364,8 +362,6 @@ public class Main{
             //   }
         }
 
-        System.out.println("User Type after: " + userPokemon.getType());
-        System.out.println("Wild Type after: " + wild.getType());
 
         if (userPokemon.getHp() == 0){ //Check if the chosen Pokemon is fainted. If it is, deal damage to the trainer
             System.out.println(userPokemon.getName() + " is fainted.");
