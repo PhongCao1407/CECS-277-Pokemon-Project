@@ -17,9 +17,9 @@ public class PokemonGenerator {
    private static int RANDOM_HEALTH = 
         (int)(Math.random() * ((MAX_HEALTH-MIN_HEALTH)+1)) + MIN_HEALTH;   
 
-  /**
-  * Scans and stores
-  */  
+    /**
+    * Scans and stores
+    */  
     private PokemonGenerator() {
     try {
       Scanner read = new Scanner(new File("PokemonList.txt"));
